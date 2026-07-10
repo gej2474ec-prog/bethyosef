@@ -204,6 +204,24 @@
     #enviarWa:hover{background:var(--verde-osc)}
     #vaciar{width:100%;background:none;border:none;color:var(--suave);margin-top:8px;cursor:pointer;font-size:.85rem;padding:6px}
     .carritoVacio{text-align:center;color:var(--suave);padding:50px 20px}
+
+    /* ---------- En CELULAR: vista tipo lista (foto chica a la izquierda) ---------- */
+    @media (max-width: 600px){
+      .grid{grid-template-columns:1fr;gap:10px;padding:12px}
+      .card{flex-direction:row;align-items:flex-start}
+      .card:hover{transform:none;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+      .foto{width:110px;flex:none;aspect-ratio:1/1;padding:6px;border-right:1px solid var(--borde)}
+      .info{padding:10px 12px}
+      .cat{font-size:.64rem}
+      .nombre{font-size:.92rem;margin:2px 0;flex:none}
+      .codigo{font-size:.72rem}
+      .precio{font-size:1.15rem;margin-top:6px}
+      .precio .base{font-size:.78rem}
+      .qty{margin-top:8px;max-width:220px}
+      .qty button{width:36px;height:38px;font-size:1.15rem}
+      .qty input{height:38px}
+      .btn-add{margin-top:8px;padding:10px;font-size:.9rem;max-width:260px}
+    }
   </style>
 </head>
 <body>
