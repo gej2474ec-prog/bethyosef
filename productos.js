@@ -1440,7 +1440,8 @@ const CONFIG = {
   "nombreTienda": "BETH YOSEF",
   "eslogan": "Catalogo de productos",
   "whatsapp": "525521054661",
-  "moneda": "$"
+  "moneda": "$",
+  "pedidosURL": "https://script.google.com/macros/s/AKfycbzOcuQRPL-8HRaWfxme3bGvsvXQZvhS_KprTgik7Zmhlj270BZ-y27VJK7b876FvZb3/exec"
 };
 
 const PRECIOS_CLIENTE = {

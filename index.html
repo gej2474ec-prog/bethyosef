@@ -278,7 +278,7 @@
     <div class="pie" id="pieCarrito"></div>
   </aside>
 
-  <script src="productos.js?v=cbe75ca1"></script>
+  <script src="productos.js?v=73cac048"></script>
   <script>
     // --- Rellenar textos de la tienda ---
     document.getElementById('logo').alt = CONFIG.nombreTienda;
@@ -597,6 +597,27 @@
       ).join('\n');
       const lineaCliente = clienteActual ? `Cliente: ${clienteActual}\n` : "";
       const msg = `Hola, quiero hacer este pedido:\n${lineaCliente}\n${lineas.join('\n')}\n\nTotal aprox.: ${formatoPrecio(total)}\n\n----- Captura (codigo  precio  cantidad) -----\n${captura}`;
+
+      // Registrar el pedido en la Hoja de Google (si está configurada)
+      if(CONFIG.pedidosURL){
+        try{
+          fetch(CONFIG.pedidosURL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify({
+              cliente: clienteActual || '',
+              items: carrito.map(i => ({
+                codigo: i.codigo,
+                desc: i.desc,
+                cant: fmtCant(i.cant),
+                precio: i.precio || 0
+              }))
+            })
+          });
+        }catch(err){ /* si falla el registro, el pedido igual se manda por WhatsApp */ }
+      }
+
       window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`, '_blank');
 
       // Al volver a esta pantalla, mostrar el botón para terminar el pedido
