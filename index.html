@@ -448,7 +448,7 @@
           : `
             <div class="qty">
               <button class="menos" type="button">−</button>
-              <input class="cant" type="number" value="1" min="0" step="1" inputmode="decimal">
+              <input class="cant" type="number" value="1" min="0" ${(exist !== null && exist !== undefined) ? `max="${exist}"` : ''} step="1" inputmode="decimal">
               <button class="mas" type="button">+</button>
               ${uQty}
             </div>
@@ -473,11 +473,23 @@
       });
     }
 
+    // Tope de existencia de un producto (o null si no hay control de inventario)
+    function topeDe(p){
+      const e = existenciaDe(p);
+      return (e === null || e === undefined) ? null : e;
+    }
+    // Cuánto de ese producto ya está en el carrito
+    function enCarritoDe(p){
+      const it = carrito.find(i => i.k === (p.codigo || p.descripcion));
+      return it ? it.cant : 0;
+    }
+
     // --- Clics en las tarjetas (cantidad y agregar) ---
     document.getElementById('grid').addEventListener('click', e => {
       const card = e.target.closest('.card');
       if(!card) return;
       const input = card.querySelector('.cant');
+      const tope = card._prod ? topeDe(card._prod) : null;
 
       if(e.target.classList.contains('menos')){
         let v = parseFloat(input.value) || 0;
@@ -486,12 +498,30 @@
       }
       if(e.target.classList.contains('mas')){
         let v = parseFloat(input.value) || 0;
-        input.value = fmtCant(v + 1);
+        v = v + 1;
+        if(tope !== null && v > tope) v = tope;   // no pasar de la existencia
+        input.value = fmtCant(v);
         return;
       }
       if(e.target.classList.contains('btn-add')){
         let cant = parseFloat(input.value);
         if(!cant || cant <= 0) cant = 1;
+
+        // No dejar que el total (carrito + esto) pase de la existencia
+        if(tope !== null){
+          const yaEnCarrito = enCarritoDe(card._prod);
+          const espacio = tope - yaEnCarrito;
+          if(espacio <= 0){
+            alert('Ya tienes en tu pedido todo lo disponible de este producto (' + fmtCant(tope) + ').');
+            return;
+          }
+          if(cant > espacio){
+            cant = espacio;
+            alert('Solo hay ' + fmtCant(tope) + ' disponibles. Se agregó ' + fmtCant(cant) + '.');
+            input.value = fmtCant(cant);
+          }
+        }
+
         agregarAlCarrito(card._prod, cant);
         // Confirmación visual breve
         const b = e.target;
@@ -501,19 +531,34 @@
       }
     });
 
+    // Si escriben a mano más de la existencia en una tarjeta, lo limitamos
+    document.getElementById('grid').addEventListener('input', e => {
+      if(!e.target.classList.contains('cant')) return;
+      const card = e.target.closest('.card');
+      const tope = card && card._prod ? topeDe(card._prod) : null;
+      if(tope === null) return;
+      let v = parseFloat(e.target.value);
+      if(!isNaN(v) && v > tope) e.target.value = fmtCant(tope);
+    });
+
     // --- Carrito ---
     function llave(p){ return p.codigo || p.descripcion; }
 
     function agregarAlCarrito(p, cant){
       const k = llave(p);
+      const tope = topeDe(p);
       const existente = carrito.find(i => i.k === k);
       if(existente){
-        existente.cant = fmtCant(existente.cant + cant);
+        let nuevo = fmtCant(existente.cant + cant);
+        if(tope !== null && nuevo > tope) nuevo = tope;
+        existente.cant = nuevo;
       }else{
+        let c = fmtCant(cant);
+        if(tope !== null && c > tope) c = tope;
         carrito.push({
           k, codigo: p.codigo, desc: p.descripcion,
           precio: precioDe(p), unidad: p.unidad, foto: p.foto,
-          cant: fmtCant(cant)
+          cant: c
         });
       }
       guardarCarrito();
@@ -595,7 +640,14 @@
         carrito[idx].cant = fmtCant(Math.max(0, carrito[idx].cant - 1));
         if(carrito[idx].cant === 0) carrito.splice(idx, 1);
       }else if(e.target.classList.contains('cmas')){
-        carrito[idx].cant = fmtCant(carrito[idx].cant + 1);
+        const pr = PROD_POR_COD[carrito[idx].codigo];
+        const tope = pr ? topeDe(pr) : null;
+        let v = fmtCant(carrito[idx].cant + 1);
+        if(tope !== null && v > tope){
+          v = tope;
+          alert('Solo hay ' + fmtCant(tope) + ' disponibles de este producto.');
+        }
+        carrito[idx].cant = v;
       }else if(e.target.classList.contains('quitar')){
         carrito.splice(idx, 1);
       }else{
@@ -610,6 +662,12 @@
       const idx = parseInt(fila.dataset.idx, 10);
       let v = parseFloat(e.target.value);
       if(!v || v < 0) v = 0;
+      const pr = PROD_POR_COD[carrito[idx].codigo];
+      const tope = pr ? topeDe(pr) : null;
+      if(tope !== null && v > tope){
+        v = tope;
+        alert('Solo hay ' + fmtCant(tope) + ' disponibles de este producto.');
+      }
       carrito[idx].cant = fmtCant(v);
       if(carrito[idx].cant === 0) carrito.splice(idx, 1);
       guardarCarrito(); actualizarCarrito();
