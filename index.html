@@ -338,6 +338,30 @@
       return p.precio;
     }
 
+    // --- Inventario en vivo (leido de la Hoja de Google) ---
+    let INV_LIVE = null;   // null = todavia no carga; usa el del Excel mientras
+    function existenciaDe(p){
+      if(INV_LIVE){
+        const v = INV_LIVE[normCod(p.codigo)];
+        return (v === undefined) ? null : v;   // no está en inventario = sin control
+      }
+      return (p.existencia === undefined) ? null : p.existencia;  // respaldo (Excel)
+    }
+    function cargarInventarioLive(){
+      if(!CONFIG.pedidosURL) return;
+      const cb = 'inv_cb_' + Math.floor(Math.random() * 1e9);
+      window[cb] = function(data){
+        INV_LIVE = {};
+        Object.keys(data || {}).forEach(function(k){ INV_LIVE[normCod(k)] = Number(data[k]); });
+        try { delete window[cb]; } catch(e){}
+        pintar();   // volver a dibujar ya con el inventario real
+      };
+      const s = document.createElement('script');
+      s.src = CONFIG.pedidosURL + '?callback=' + cb + '&t=' + Date.now();
+      s.onerror = function(){ try { delete window[cb]; } catch(e){} };
+      document.head.appendChild(s);
+    }
+
     function formatoPrecio(n){
       return CONFIG.moneda + n.toLocaleString('es-MX', {minimumFractionDigits:2, maximumFractionDigits:2});
     }
@@ -404,9 +428,10 @@
           ? `${formatoPrecio(precioFinal)}${uPrecio}<span class="base">${formatoPrecio(p.precio)}</span><span class="badge-cli">CLIENTE</span>`
           : `${formatoPrecio(p.precio)}${uPrecio}`;
 
-        // ¿Agotado? Solo si tiene existencia definida y es 0 o menos.
-        // (existencia vacía = sin control = disponible)
-        const agotado = (p.existencia !== null && p.existencia !== undefined && p.existencia <= 0);
+        // ¿Agotado? Usa el inventario en vivo (Google) si ya cargó; si no, el del Excel.
+        // Existencia sin definir = sin control = disponible.
+        const exist = existenciaDe(p);
+        const agotado = (exist !== null && exist !== undefined && exist <= 0);
         if(agotado) card.className = 'card agotado';
 
         const cinta = agotado ? `<div class="cinta-agotado">AGOTADO</div>` : "";
@@ -672,6 +697,7 @@
 
     // Arranque
     aplicarCliente();
+    cargarInventarioLive();   // lee el inventario de Google y refresca los AGOTADO
   </script>
 </body>
 </html>
