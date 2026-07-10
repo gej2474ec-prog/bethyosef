@@ -202,12 +202,6 @@
       padding:14px;border-radius:12px;font-weight:700;font-size:1rem;cursor:pointer;
     }
     #enviarWa:hover{background:var(--verde-osc)}
-    #terminar{
-      width:100%;display:flex;align-items:center;justify-content:center;gap:8px;
-      background:var(--acento);color:#fff;border:none;margin-top:8px;
-      padding:14px;border-radius:12px;font-weight:700;font-size:1rem;cursor:pointer;
-    }
-    #terminar:hover{background:var(--acento-osc)}
     #vaciar{width:100%;background:none;border:none;color:var(--suave);margin-top:8px;cursor:pointer;font-size:.85rem;padding:6px}
     .carritoVacio{text-align:center;color:var(--suave);padding:50px 20px}
 
@@ -510,40 +504,12 @@
         <div class="total"><span>Total aprox.</span><span>${formatoPrecio(total)}</span></div>
         <div class="nota">* El total es aproximado; el precio final puede variar según el peso real.</div>
         <button id="enviarWa" type="button">💬 Enviar pedido por WhatsApp</button>
-        <button id="terminar" type="button" style="display:none">✅ Terminar pedido (descargar TXT)</button>
         <button id="vaciar" type="button">Vaciar pedido</button>
       `;
       document.getElementById('enviarWa').onclick = enviarPedido;
-      document.getElementById('terminar').onclick = terminarPedido;
       document.getElementById('vaciar').onclick = () => {
         carrito = []; guardarCarrito(); actualizarCarrito();
       };
-    }
-
-    // Descarga el archivo .txt con la estructura: codigo [tab] precio [tab] cantidad
-    function terminarPedido(){
-      if(carrito.length === 0) return;
-      const lineas = carrito.map(i =>
-        `${i.codigo}\t${(i.precio || 0).toFixed(2)}\t${fmtCant(i.cant)}`
-      );
-      const contenido = lineas.join('\r\n');   // CRLF para que se vea bien en Bloc de notas
-      const blob = new Blob([contenido], { type: 'text/plain;charset=utf-8' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      const cli = clienteActual ? clienteActual.replace(/[^\w-]/g, '') + '_' : '';
-      a.href = url;
-      a.download = `pedido_${cli}${Date.now()}.txt`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      setTimeout(() => URL.revokeObjectURL(url), 1500);
-
-      // Terminar: vaciar el pedido y cerrar
-      carrito = [];
-      guardarCarrito();
-      actualizarCarrito();
-      cerrarCarrito();
-      alert('¡Pedido terminado! Se descargó el archivo del pedido. ✅');
     }
 
     // Clics dentro del carrito (cantidades y quitar)
@@ -592,12 +558,6 @@
       const lineaCliente = clienteActual ? `Cliente: ${clienteActual}\n` : "";
       const msg = `Hola, quiero hacer este pedido:\n${lineaCliente}\n${lineas.join('\n')}\n\nTotal aprox.: ${formatoPrecio(total)}\n\n----- Captura (codigo  precio  cantidad) -----\n${captura}`;
       window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`, '_blank');
-
-      // Al volver a esta pantalla, mostrar el botón para terminar (descargar TXT)
-      const btnT = document.getElementById('terminar');
-      if(btnT) btnT.style.display = 'flex';
-      const btnW = document.getElementById('enviarWa');
-      if(btnW){ btnW.textContent = '💬 Reenviar por WhatsApp'; btnW.style.opacity = '.75'; }
     }
 
     // Abrir / cerrar el panel
