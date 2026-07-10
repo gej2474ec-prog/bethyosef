@@ -109,6 +109,17 @@
     .precio .u{font-size:.8rem;color:var(--suave);font-weight:600}
     .precio .base{font-size:.85rem;color:var(--suave);text-decoration:line-through;font-weight:600;margin-left:6px}
     .badge-cli{display:inline-block;background:var(--acento);color:#fff;font-size:.62rem;font-weight:700;padding:2px 7px;border-radius:999px;margin-left:6px;vertical-align:middle;letter-spacing:.3px}
+    .card.agotado .foto{opacity:.45;filter:grayscale(.4)}
+    .agotado-msg{
+      margin-top:12px;text-align:center;color:var(--suave);font-weight:700;
+      padding:11px;border:1px dashed var(--borde);border-radius:10px;background:#f9fafb;
+    }
+    .cinta-agotado{
+      position:absolute;top:10px;left:10px;z-index:2;
+      background:#6b7280;color:#fff;font-size:.66rem;font-weight:800;
+      padding:4px 10px;border-radius:6px;letter-spacing:.5px;
+    }
+    .card{position:relative}
 
     .qty{display:flex;align-items:center;margin-top:10px}
     .qty button{
@@ -267,7 +278,7 @@
     <div class="pie" id="pieCarrito"></div>
   </aside>
 
-  <script src="productos.js?v=f2508c17"></script>
+  <script src="productos.js?v=cbe75ca1"></script>
   <script>
     // --- Rellenar textos de la tienda ---
     document.getElementById('logo').alt = CONFIG.nombreTienda;
@@ -393,20 +404,32 @@
           ? `${formatoPrecio(precioFinal)}${uPrecio}<span class="base">${formatoPrecio(p.precio)}</span><span class="badge-cli">CLIENTE</span>`
           : `${formatoPrecio(p.precio)}${uPrecio}`;
 
-        card.innerHTML = `
-          ${foto}
-          <div class="info">
-            <span class="cat">${p.familia}</span>
-            <div class="nombre">${p.descripcion}</div>
-            ${lineaCodigo}
-            <div class="precio">${precioHtml}</div>
+        // ¿Agotado? Solo si tiene existencia definida y es 0 o menos.
+        // (existencia vacía = sin control = disponible)
+        const agotado = (p.existencia !== null && p.existencia !== undefined && p.existencia <= 0);
+        if(agotado) card.className = 'card agotado';
+
+        const cinta = agotado ? `<div class="cinta-agotado">AGOTADO</div>` : "";
+        const controles = agotado
+          ? `<div class="agotado-msg">😔 Agotado por ahora</div>`
+          : `
             <div class="qty">
               <button class="menos" type="button">−</button>
               <input class="cant" type="number" value="1" min="0" step="1" inputmode="decimal">
               <button class="mas" type="button">+</button>
               ${uQty}
             </div>
-            <button class="btn-add" type="button">🛒 Agregar</button>
+            <button class="btn-add" type="button">🛒 Agregar</button>`;
+
+        card.innerHTML = `
+          ${cinta}
+          ${foto}
+          <div class="info">
+            <span class="cat">${p.familia}</span>
+            <div class="nombre">${p.descripcion}</div>
+            ${lineaCodigo}
+            <div class="precio">${precioHtml}</div>
+            ${controles}
           </div>
         `;
 

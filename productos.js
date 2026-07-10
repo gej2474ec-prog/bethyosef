@@ -9,7 +9,8 @@ const PRODUCTOS = [
     "precio": 622.0,
     "familia": "CARNES FRIAS NACIONALES",
     "unidad": "kg",
-    "foto": "00118.jpg"
+    "foto": "00118.jpg",
+    "existencia": 0.0
   },
   {
     "codigo": "11156",
@@ -17,7 +18,8 @@ const PRODUCTOS = [
     "precio": 622.0,
     "familia": "CARNES FRIAS NACIONALES",
     "unidad": "kg",
-    "foto": "11156.jpg"
+    "foto": "11156.jpg",
+    "existencia": null
   },
   {
     "codigo": "00712",
@@ -25,7 +27,8 @@ const PRODUCTOS = [
     "precio": 622.0,
     "familia": "CARNES FRIAS NACIONALES",
     "unidad": "kg",
-    "foto": "00712.jpg"
+    "foto": "00712.jpg",
+    "existencia": null
   },
   {
     "codigo": "900113",
@@ -33,7 +36,8 @@ const PRODUCTOS = [
     "precio": 622.0,
     "familia": "CARNES FRIAS NACIONALES",
     "unidad": "kg",
-    "foto": "900113.jpg"
+    "foto": "900113.jpg",
+    "existencia": null
   },
   {
     "codigo": "00112",
@@ -41,7 +45,8 @@ const PRODUCTOS = [
     "precio": 622.0,
     "familia": "CARNES FRIAS NACIONALES",
     "unidad": "kg",
-    "foto": "00112.jpg"
+    "foto": "00112.jpg",
+    "existencia": null
   },
   {
     "codigo": "900108",
@@ -49,7 +54,8 @@ const PRODUCTOS = [
     "precio": 622.0,
     "familia": "CARNES FRIAS NACIONALES",
     "unidad": "kg",
-    "foto": "900108.jpg"
+    "foto": "900108.jpg",
+    "existencia": null
   },
   {
     "codigo": "00114",
@@ -57,7 +63,8 @@ const PRODUCTOS = [
     "precio": 410.0,
     "familia": "CARNES FRIAS NACIONALES",
     "unidad": "kg",
-    "foto": "00114.jpg"
+    "foto": "00114.jpg",
+    "existencia": null
   },
   {
     "codigo": "00115",
@@ -65,7 +72,8 @@ const PRODUCTOS = [
     "precio": 410.0,
     "familia": "CARNES FRIAS NACIONALES",
     "unidad": "kg",
-    "foto": "00115.jpg"
+    "foto": "00115.jpg",
+    "existencia": null
   },
   {
     "codigo": "00847",
@@ -73,7 +81,8 @@ const PRODUCTOS = [
     "precio": 622.0,
     "familia": "CARNES FRIAS NACIONALES",
     "unidad": "kg",
-    "foto": "00847.jpg"
+    "foto": "00847.jpg",
+    "existencia": null
   },
   {
     "codigo": "900119",
@@ -81,7 +90,8 @@ const PRODUCTOS = [
     "precio": 622.0,
     "familia": "CARNES FRIAS NACIONALES",
     "unidad": "kg",
-    "foto": "900119.jpg"
+    "foto": "900119.jpg",
+    "existencia": null
   },
   {
     "codigo": "900109",
@@ -89,7 +99,8 @@ const PRODUCTOS = [
     "precio": 622.0,
     "familia": "CARNES FRIAS NACIONALES",
     "unidad": "kg",
-    "foto": "900109.jpg"
+    "foto": "900109.jpg",
+    "existencia": null
   },
   {
     "codigo": "900056",
@@ -97,7 +108,8 @@ const PRODUCTOS = [
     "precio": 622.0,
     "familia": "CARNES FRIAS NACIONALES",
     "unidad": "kg",
-    "foto": "900056.jpg"
+    "foto": "900056.jpg",
+    "existencia": null
   },
   {
     "codigo": "900110",
@@ -105,7 +117,8 @@ const PRODUCTOS = [
     "precio": 410.0,
     "familia": "CARNES FRIAS NACIONALES",
     "unidad": "kg",
-    "foto": "900110.jpg"
+    "foto": "900110.jpg",
+    "existencia": null
   },
   {
     "codigo": "00301",
@@ -113,7 +126,8 @@ const PRODUCTOS = [
     "precio": 778.0,
     "familia": "CARNES FRIAS NACIONALES",
     "unidad": "kg",
-    "foto": "00301.jpg"
+    "foto": "00301.jpg",
+    "existencia": null
   },
   {
     "codigo": "00750",
@@ -121,7 +135,8 @@ const PRODUCTOS = [
     "precio": 622.0,
     "familia": "CARNES FRIAS NACIONALES",
     "unidad": "kg",
-    "foto": "00750.jpg"
+    "foto": "00750.jpg",
+    "existencia": null
   },
   {
     "codigo": "90036",
@@ -129,7 +144,8 @@ const PRODUCTOS = [
     "precio": 1700.0,
     "familia": "CARNES FRIAS NACIONALES",
     "unidad": "kg",
-    "foto": "90036.jpg"
+    "foto": "90036.jpg",
+    "existencia": null
   },
   {
     "codigo": "900111",
@@ -137,7 +153,8 @@ const PRODUCTOS = [
     "precio": 410.0,
     "familia": "CARNES FRIAS NACIONALES",
     "unidad": "kg",
-    "foto": "900111.jpg"
+    "foto": "900111.jpg",
+    "existencia": null
   },
   {
     "codigo": "900044",
@@ -145,7 +162,8 @@ const PRODUCTOS = [
     "precio": 622.0,
     "familia": "CARNES FRIAS NACIONALES",
     "unidad": "kg",
-    "foto": "900044.jpg"
+    "foto": "900044.jpg",
+    "existencia": null
   },
   {
     "codigo": "7501134502031",
@@ -153,7 +171,8 @@ const PRODUCTOS = [
     "precio": 289.0,
     "familia": "QUESOS NACIONALES",
     "unidad": "Pz",
-    "foto": "7501134502031.jpg"
+    "foto": "7501134502031.jpg",
+    "existencia": null
   },
   {
     "codigo": "7501134503984",
@@ -161,7 +180,8 @@ const PRODUCTOS = [
     "precio": 142.0,
     "familia": "QUESOS NACIONALES",
     "unidad": "Pz",
-    "foto": "7501134503984.jpg"
+    "foto": "7501134503984.jpg",
+    "existencia": null
   },
   {
     "codigo": "7501134510920",
@@ -169,7 +189,8 @@ const PRODUCTOS = [
     "precio": 135.0,
     "familia": "QUESOS NACIONALES",
     "unidad": "Pz",
-    "foto": "7501134510920.jpg"
+    "foto": "7501134510920.jpg",
+    "existencia": null
   },
   {
     "codigo": "7501134503953",
@@ -177,7 +198,8 @@ const PRODUCTOS = [
     "precio": 225.0,
     "familia": "QUESOS NACIONALES",
     "unidad": "Pz",
-    "foto": "7501134503953.jpg"
+    "foto": "7501134503953.jpg",
+    "existencia": null
   },
   {
     "codigo": "7501134510432",
@@ -185,7 +207,8 @@ const PRODUCTOS = [
     "precio": 125.0,
     "familia": "QUESOS NACIONALES",
     "unidad": "Pz",
-    "foto": "7501134510432.jpg"
+    "foto": "7501134510432.jpg",
+    "existencia": null
   },
   {
     "codigo": "7501134510609",
@@ -193,7 +216,8 @@ const PRODUCTOS = [
     "precio": 132.0,
     "familia": "QUESOS NACIONALES",
     "unidad": "Pz",
-    "foto": "7501134510609.jpg"
+    "foto": "7501134510609.jpg",
+    "existencia": null
   },
   {
     "codigo": "7501134510715",
@@ -201,7 +225,8 @@ const PRODUCTOS = [
     "precio": 142.0,
     "familia": "QUESOS NACIONALES",
     "unidad": "Pz",
-    "foto": "7501134510715.jpg"
+    "foto": "7501134510715.jpg",
+    "existencia": null
   },
   {
     "codigo": "7501134504219",
@@ -209,7 +234,8 @@ const PRODUCTOS = [
     "precio": 95.0,
     "familia": "QUESOS NACIONALES",
     "unidad": "Pz",
-    "foto": "7501134504219.jpg"
+    "foto": "7501134504219.jpg",
+    "existencia": null
   },
   {
     "codigo": "7501134505476",
@@ -217,7 +243,8 @@ const PRODUCTOS = [
     "precio": 189.0,
     "familia": "QUESOS NACIONALES",
     "unidad": "Pz",
-    "foto": "7501134505476.jpg"
+    "foto": "7501134505476.jpg",
+    "existencia": null
   },
   {
     "codigo": "7501091200018",
@@ -225,7 +252,8 @@ const PRODUCTOS = [
     "precio": 102.0,
     "familia": "QUESOS NACIONALES",
     "unidad": "Pz",
-    "foto": "7501091200018.jpg"
+    "foto": "7501091200018.jpg",
+    "existencia": null
   },
   {
     "codigo": "7501134500556",
@@ -233,7 +261,8 @@ const PRODUCTOS = [
     "precio": 70.0,
     "familia": "QUESOS NACIONALES",
     "unidad": "Pz",
-    "foto": "7501134500556.jpg"
+    "foto": "7501134500556.jpg",
+    "existencia": null
   },
   {
     "codigo": "7501669893154",
@@ -241,7 +270,8 @@ const PRODUCTOS = [
     "precio": 190.0,
     "familia": "QUESOS NACIONALES",
     "unidad": "Pz",
-    "foto": "7501669893154.jpg"
+    "foto": "7501669893154.jpg",
+    "existencia": null
   },
   {
     "codigo": "7501669893178",
@@ -249,7 +279,8 @@ const PRODUCTOS = [
     "precio": 190.0,
     "familia": "QUESOS NACIONALES",
     "unidad": "Pz",
-    "foto": "7501669893178.jpg"
+    "foto": "7501669893178.jpg",
+    "existencia": null
   },
   {
     "codigo": "7501669892249",
@@ -257,7 +288,8 @@ const PRODUCTOS = [
     "precio": 190.0,
     "familia": "QUESOS NACIONALES",
     "unidad": "Pz",
-    "foto": "7501669892249.jpg"
+    "foto": "7501669892249.jpg",
+    "existencia": null
   },
   {
     "codigo": "7501134505469",
@@ -265,7 +297,8 @@ const PRODUCTOS = [
     "precio": 185.0,
     "familia": "QUESOS NACIONALES",
     "unidad": "Pz",
-    "foto": "7501134505469.jpg"
+    "foto": "7501134505469.jpg",
+    "existencia": null
   },
   {
     "codigo": "7501134801850",
@@ -273,7 +306,8 @@ const PRODUCTOS = [
     "precio": 380.0,
     "familia": "QUESOS NACIONALES",
     "unidad": "Pz",
-    "foto": "7501134801850.jpg"
+    "foto": "7501134801850.jpg",
+    "existencia": null
   },
   {
     "codigo": "030900007045",
@@ -281,7 +315,8 @@ const PRODUCTOS = [
     "precio": 73.0,
     "familia": "QUESOS NACIONALES",
     "unidad": "Pz",
-    "foto": "030900007045.jpg"
+    "foto": "030900007045.jpg",
+    "existencia": null
   },
   {
     "codigo": "7501134510921",
@@ -289,7 +324,8 @@ const PRODUCTOS = [
     "precio": 162.0,
     "familia": "QUESOS NACIONALES",
     "unidad": "Pz",
-    "foto": "7501134510921.jpg"
+    "foto": "7501134510921.jpg",
+    "existencia": null
   },
   {
     "codigo": "7501134510933",
@@ -297,7 +333,8 @@ const PRODUCTOS = [
     "precio": 290.0,
     "familia": "QUESOS NACIONALES",
     "unidad": "Pz",
-    "foto": "7501134510933.jpg"
+    "foto": "7501134510933.jpg",
+    "existencia": null
   },
   {
     "codigo": "7501134510608",
@@ -305,7 +342,8 @@ const PRODUCTOS = [
     "precio": 156.0,
     "familia": "QUESOS NACIONALES",
     "unidad": "Pz",
-    "foto": "7501134510608.jpg"
+    "foto": "7501134510608.jpg",
+    "existencia": null
   },
   {
     "codigo": "7501134504882",
@@ -313,7 +351,8 @@ const PRODUCTOS = [
     "precio": 240.0,
     "familia": "QUESOS NACIONALES",
     "unidad": "Pz",
-    "foto": "7501134504882.jpg"
+    "foto": "7501134504882.jpg",
+    "existencia": null
   },
   {
     "codigo": "857907008284",
@@ -321,7 +360,8 @@ const PRODUCTOS = [
     "precio": 181.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "857907008284.jpg"
+    "foto": "857907008284.jpg",
+    "existencia": null
   },
   {
     "codigo": "710069404540",
@@ -329,7 +369,8 @@ const PRODUCTOS = [
     "precio": 64.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "710069404540.jpg"
+    "foto": "710069404540.jpg",
+    "existencia": null
   },
   {
     "codigo": "815871012409",
@@ -337,7 +378,8 @@ const PRODUCTOS = [
     "precio": 300.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "815871012409.jpg"
+    "foto": "815871012409.jpg",
+    "existencia": null
   },
   {
     "codigo": "077245107931",
@@ -345,7 +387,8 @@ const PRODUCTOS = [
     "precio": 99.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "077245107931.jpg"
+    "foto": "077245107931.jpg",
+    "existencia": null
   },
   {
     "codigo": "027000419229",
@@ -353,7 +396,8 @@ const PRODUCTOS = [
     "precio": 64.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "027000419229.jpg"
+    "foto": "027000419229.jpg",
+    "existencia": null
   },
   {
     "codigo": "710069114128",
@@ -361,7 +405,8 @@ const PRODUCTOS = [
     "precio": 130.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "710069114128.jpg"
+    "foto": "710069114128.jpg",
+    "existencia": null
   },
   {
     "codigo": "072700000079",
@@ -369,7 +414,8 @@ const PRODUCTOS = [
     "precio": 75.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "072700000079.jpg"
+    "foto": "072700000079.jpg",
+    "existencia": null
   },
   {
     "codigo": "072700000116",
@@ -377,7 +423,8 @@ const PRODUCTOS = [
     "precio": 75.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "072700000116.jpg"
+    "foto": "072700000116.jpg",
+    "existencia": null
   },
   {
     "codigo": "073490125126",
@@ -385,7 +432,8 @@ const PRODUCTOS = [
     "precio": 220.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "073490125126.jpg"
+    "foto": "073490125126.jpg",
+    "existencia": null
   },
   {
     "codigo": "087752006474",
@@ -393,7 +441,8 @@ const PRODUCTOS = [
     "precio": 236.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": "087752006474.jpeg"
+    "foto": "087752006474.jpeg",
+    "existencia": null
   },
   {
     "codigo": "087752035757",
@@ -401,7 +450,8 @@ const PRODUCTOS = [
     "precio": 236.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": "087752035757.jpeg"
+    "foto": "087752035757.jpeg",
+    "existencia": null
   },
   {
     "codigo": "073490124907",
@@ -409,7 +459,8 @@ const PRODUCTOS = [
     "precio": 141.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": "073490124907.jpg"
+    "foto": "073490124907.jpg",
+    "existencia": null
   },
   {
     "codigo": "073314648817",
@@ -417,7 +468,8 @@ const PRODUCTOS = [
     "precio": 163.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": "073314648817.jpg"
+    "foto": "073314648817.jpg",
+    "existencia": null
   },
   {
     "codigo": "07349043",
@@ -425,7 +477,8 @@ const PRODUCTOS = [
     "precio": 89.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": "07349043.jpg"
+    "foto": "07349043.jpg",
+    "existencia": null
   },
   {
     "codigo": "043427008679",
@@ -433,7 +486,8 @@ const PRODUCTOS = [
     "precio": 100.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "043427008679.jpg"
+    "foto": "043427008679.jpg",
+    "existencia": null
   },
   {
     "codigo": "041335000532",
@@ -441,7 +495,8 @@ const PRODUCTOS = [
     "precio": 177.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "041335000532.jpg"
+    "foto": "041335000532.jpg",
+    "existencia": null
   },
   {
     "codigo": "640034009640",
@@ -449,7 +504,8 @@ const PRODUCTOS = [
     "precio": 160.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "640034009640.jpg"
+    "foto": "640034009640.jpg",
+    "existencia": null
   },
   {
     "codigo": "043427190060",
@@ -457,7 +513,8 @@ const PRODUCTOS = [
     "precio": 170.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "043427190060.jpg"
+    "foto": "043427190060.jpg",
+    "existencia": null
   },
   {
     "codigo": "077028870328",
@@ -465,7 +522,8 @@ const PRODUCTOS = [
     "precio": 105.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "077028870328.jpg"
+    "foto": "077028870328.jpg",
+    "existencia": null
   },
   {
     "codigo": "070970475474",
@@ -473,7 +531,8 @@ const PRODUCTOS = [
     "precio": 15.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "070970475474.jpg"
+    "foto": "070970475474.jpg",
+    "existencia": null
   },
   {
     "codigo": "070970475436",
@@ -481,7 +540,8 @@ const PRODUCTOS = [
     "precio": 15.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "070970475436.jpg"
+    "foto": "070970475436.jpg",
+    "existencia": null
   },
   {
     "codigo": "070970475467",
@@ -489,7 +549,8 @@ const PRODUCTOS = [
     "precio": 15.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "070970475467.jpg"
+    "foto": "070970475467.jpg",
+    "existencia": null
   },
   {
     "codigo": "710069173354",
@@ -497,7 +558,8 @@ const PRODUCTOS = [
     "precio": 100.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "710069173354.jpg"
+    "foto": "710069173354.jpg",
+    "existencia": null
   },
   {
     "codigo": "029882899250",
@@ -505,7 +567,8 @@ const PRODUCTOS = [
     "precio": 180.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "029882899250.jpg"
+    "foto": "029882899250.jpg",
+    "existencia": null
   },
   {
     "codigo": "794711002025",
@@ -513,7 +576,8 @@ const PRODUCTOS = [
     "precio": 129.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "794711002025.jpg"
+    "foto": "794711002025.jpg",
+    "existencia": null
   },
   {
     "codigo": "049682900987",
@@ -521,7 +585,8 @@ const PRODUCTOS = [
     "precio": 84.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "049682900987.jpg"
+    "foto": "049682900987.jpg",
+    "existencia": null
   },
   {
     "codigo": "043427007252",
@@ -529,7 +594,8 @@ const PRODUCTOS = [
     "precio": 159.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "043427007252.jpg"
+    "foto": "043427007252.jpg",
+    "existencia": null
   },
   {
     "codigo": "041740001155",
@@ -537,7 +603,8 @@ const PRODUCTOS = [
     "precio": 220.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "041740001155.jpg"
+    "foto": "041740001155.jpg",
+    "existencia": null
   },
   {
     "codigo": "041740001162",
@@ -545,7 +612,8 @@ const PRODUCTOS = [
     "precio": 220.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "041740001162.jpg"
+    "foto": "041740001162.jpg",
+    "existencia": null
   },
   {
     "codigo": "043427007245",
@@ -553,7 +621,8 @@ const PRODUCTOS = [
     "precio": 110.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "043427007245.jpg"
+    "foto": "043427007245.jpg",
+    "existencia": null
   },
   {
     "codigo": "710069601017",
@@ -561,7 +630,8 @@ const PRODUCTOS = [
     "precio": 24.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "710069601017.jpg"
+    "foto": "710069601017.jpg",
+    "existencia": null
   },
   {
     "codigo": "710069601000",
@@ -569,7 +639,8 @@ const PRODUCTOS = [
     "precio": 24.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "710069601000.jpg"
+    "foto": "710069601000.jpg",
+    "existencia": null
   },
   {
     "codigo": "025675302457",
@@ -577,7 +648,8 @@ const PRODUCTOS = [
     "precio": 13.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "025675302457.jpg"
+    "foto": "025675302457.jpg",
+    "existencia": null
   },
   {
     "codigo": "025675302358",
@@ -585,7 +657,8 @@ const PRODUCTOS = [
     "precio": 13.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "025675302358.jpg"
+    "foto": "025675302358.jpg",
+    "existencia": null
   },
   {
     "codigo": "025675302433",
@@ -593,7 +666,8 @@ const PRODUCTOS = [
     "precio": 13.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "025675302433.jpg"
+    "foto": "025675302433.jpg",
+    "existencia": null
   },
   {
     "codigo": "40099132",
@@ -601,7 +675,8 @@ const PRODUCTOS = [
     "precio": 55.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": ""
+    "foto": "",
+    "existencia": null
   },
   {
     "codigo": "42123866",
@@ -609,7 +684,8 @@ const PRODUCTOS = [
     "precio": 43.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "42123866.jpg"
+    "foto": "42123866.jpg",
+    "existencia": null
   },
   {
     "codigo": "7290002752332",
@@ -617,7 +693,8 @@ const PRODUCTOS = [
     "precio": 29.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": ""
+    "foto": "",
+    "existencia": null
   },
   {
     "codigo": "87108538",
@@ -625,7 +702,8 @@ const PRODUCTOS = [
     "precio": 37.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "87108538.jpg"
+    "foto": "87108538.jpg",
+    "existencia": null
   },
   {
     "codigo": "077245107870",
@@ -633,7 +711,8 @@ const PRODUCTOS = [
     "precio": 100.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "077245107870.jpg"
+    "foto": "077245107870.jpg",
+    "existencia": null
   },
   {
     "codigo": "710069035003",
@@ -641,7 +720,8 @@ const PRODUCTOS = [
     "precio": 66.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "710069035003.jpg"
+    "foto": "710069035003.jpg",
+    "existencia": null
   },
   {
     "codigo": "4009900535540",
@@ -649,7 +729,8 @@ const PRODUCTOS = [
     "precio": 51.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "4009900535540.jpg"
+    "foto": "4009900535540.jpg",
+    "existencia": null
   },
   {
     "codigo": "4009900535519",
@@ -657,7 +738,8 @@ const PRODUCTOS = [
     "precio": 51.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "4009900535519.jpg"
+    "foto": "4009900535519.jpg",
+    "existencia": null
   },
   {
     "codigo": "815871012034",
@@ -665,7 +747,8 @@ const PRODUCTOS = [
     "precio": 70.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "815871012034.jpg"
+    "foto": "815871012034.jpg",
+    "existencia": null
   },
   {
     "codigo": "025675250536",
@@ -673,7 +756,8 @@ const PRODUCTOS = [
     "precio": 103.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "025675250536.jpg"
+    "foto": "025675250536.jpg",
+    "existencia": null
   },
   {
     "codigo": "4009900379564",
@@ -681,7 +765,8 @@ const PRODUCTOS = [
     "precio": 103.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": ""
+    "foto": "",
+    "existencia": null
   },
   {
     "codigo": "686464545006",
@@ -689,7 +774,8 @@ const PRODUCTOS = [
     "precio": 55.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "686464545006.jpg"
+    "foto": "686464545006.jpg",
+    "existencia": null
   },
   {
     "codigo": "686464546003",
@@ -697,7 +783,8 @@ const PRODUCTOS = [
     "precio": 50.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "686464546003.jpg"
+    "foto": "686464546003.jpg",
+    "existencia": null
   },
   {
     "codigo": "025675301108",
@@ -705,7 +792,8 @@ const PRODUCTOS = [
     "precio": 43.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "025675301108.jpg"
+    "foto": "025675301108.jpg",
+    "existencia": null
   },
   {
     "codigo": "025675301122",
@@ -713,7 +801,8 @@ const PRODUCTOS = [
     "precio": 41.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "025675301122.jpg"
+    "foto": "025675301122.jpg",
+    "existencia": null
   },
   {
     "codigo": "025675301153",
@@ -721,7 +810,8 @@ const PRODUCTOS = [
     "precio": 43.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "025675301153.jpg"
+    "foto": "025675301153.jpg",
+    "existencia": null
   },
   {
     "codigo": "025675250833",
@@ -729,7 +819,8 @@ const PRODUCTOS = [
     "precio": 170.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "025675250833.jpg"
+    "foto": "025675250833.jpg",
+    "existencia": null
   },
   {
     "codigo": "710069705074",
@@ -737,7 +828,8 @@ const PRODUCTOS = [
     "precio": 100.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "710069705074.jpg"
+    "foto": "710069705074.jpg",
+    "existencia": null
   },
   {
     "codigo": "011274000337",
@@ -745,7 +837,8 @@ const PRODUCTOS = [
     "precio": 490.0,
     "familia": "QUESO IMPORTADO",
     "unidad": "Pz",
-    "foto": "011274000337.jpg"
+    "foto": "011274000337.jpg",
+    "existencia": null
   },
   {
     "codigo": "735375601254",
@@ -753,7 +846,8 @@ const PRODUCTOS = [
     "precio": 49.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "735375601254.jpg"
+    "foto": "735375601254.jpg",
+    "existencia": null
   },
   {
     "codigo": "079200720476",
@@ -761,7 +855,8 @@ const PRODUCTOS = [
     "precio": 19.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "079200720476.jpg"
+    "foto": "079200720476.jpg",
+    "existencia": null
   },
   {
     "codigo": "079200339401",
@@ -769,7 +864,8 @@ const PRODUCTOS = [
     "precio": 19.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "079200339401.jpg"
+    "foto": "079200339401.jpg",
+    "existencia": null
   },
   {
     "codigo": "079200615574",
@@ -777,7 +873,8 @@ const PRODUCTOS = [
     "precio": 19.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "079200615574.jpg"
+    "foto": "079200615574.jpg",
+    "existencia": null
   },
   {
     "codigo": "079200695002",
@@ -785,7 +882,8 @@ const PRODUCTOS = [
     "precio": 19.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "079200695002.jpg"
+    "foto": "079200695002.jpg",
+    "existencia": null
   },
   {
     "codigo": "079200722937",
@@ -793,7 +891,8 @@ const PRODUCTOS = [
     "precio": 19.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "079200722937.jpg"
+    "foto": "079200722937.jpg",
+    "existencia": null
   },
   {
     "codigo": "079200879693",
@@ -801,7 +900,8 @@ const PRODUCTOS = [
     "precio": 19.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "079200879693.jpg"
+    "foto": "079200879693.jpg",
+    "existencia": null
   },
   {
     "codigo": "686464462006",
@@ -809,7 +909,8 @@ const PRODUCTOS = [
     "precio": 53.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "686464462006.jpg"
+    "foto": "686464462006.jpg",
+    "existencia": null
   },
   {
     "codigo": "710069308428",
@@ -817,7 +918,8 @@ const PRODUCTOS = [
     "precio": 121.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "710069308428.jpg"
+    "foto": "710069308428.jpg",
+    "existencia": null
   },
   {
     "codigo": "710069008915",
@@ -825,7 +927,8 @@ const PRODUCTOS = [
     "precio": 121.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "710069008915.jpg"
+    "foto": "710069008915.jpg",
+    "existencia": null
   },
   {
     "codigo": "710069308411",
@@ -833,7 +936,8 @@ const PRODUCTOS = [
     "precio": 123.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "710069308411.jpg"
+    "foto": "710069308411.jpg",
+    "existencia": null
   },
   {
     "codigo": "730127100122",
@@ -841,7 +945,8 @@ const PRODUCTOS = [
     "precio": 143.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "730127100122.jpeg"
+    "foto": "730127100122.jpeg",
+    "existencia": null
   },
   {
     "codigo": "730127100191",
@@ -849,7 +954,8 @@ const PRODUCTOS = [
     "precio": 150.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "730127100191.jpg"
+    "foto": "730127100191.jpg",
+    "existencia": null
   },
   {
     "codigo": "730127100139",
@@ -857,7 +963,8 @@ const PRODUCTOS = [
     "precio": 120.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "730127100139.jpg"
+    "foto": "730127100139.jpg",
+    "existencia": null
   },
   {
     "codigo": "730127101105",
@@ -865,7 +972,8 @@ const PRODUCTOS = [
     "precio": 150.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "730127101105.jpg"
+    "foto": "730127101105.jpg",
+    "existencia": null
   },
   {
     "codigo": "730127100450",
@@ -873,7 +981,8 @@ const PRODUCTOS = [
     "precio": 160.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "730127100450.jpg"
+    "foto": "730127100450.jpg",
+    "existencia": null
   },
   {
     "codigo": "857907008529",
@@ -881,7 +990,8 @@ const PRODUCTOS = [
     "precio": 105.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "857907008529.jpeg"
+    "foto": "857907008529.jpeg",
+    "existencia": null
   },
   {
     "codigo": "794711005392",
@@ -889,7 +999,8 @@ const PRODUCTOS = [
     "precio": 100.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "794711005392.jpg"
+    "foto": "794711005392.jpg",
+    "existencia": null
   },
   {
     "codigo": "711575004965",
@@ -897,7 +1008,8 @@ const PRODUCTOS = [
     "precio": 215.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "711575004965.jpg"
+    "foto": "711575004965.jpg",
+    "existencia": null
   },
   {
     "codigo": "711575004910",
@@ -905,7 +1017,8 @@ const PRODUCTOS = [
     "precio": 120.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "711575004910.jpg"
+    "foto": "711575004910.jpg",
+    "existencia": null
   },
   {
     "codigo": "711575004996",
@@ -913,7 +1026,8 @@ const PRODUCTOS = [
     "precio": 120.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "711575004996.jpg"
+    "foto": "711575004996.jpg",
+    "existencia": null
   },
   {
     "codigo": "023005001643",
@@ -921,7 +1035,8 @@ const PRODUCTOS = [
     "precio": 150.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "023005001643.jpg"
+    "foto": "023005001643.jpg",
+    "existencia": null
   },
   {
     "codigo": "605453520961",
@@ -929,7 +1044,8 @@ const PRODUCTOS = [
     "precio": 197.0,
     "familia": "CONGELADO",
     "unidad": "Pz",
-    "foto": "605453520961.jpg"
+    "foto": "605453520961.jpg",
+    "existencia": null
   },
   {
     "codigo": "605453120277",
@@ -937,7 +1053,8 @@ const PRODUCTOS = [
     "precio": 200.0,
     "familia": "CONGELADO",
     "unidad": "Pz",
-    "foto": "605453120277.jpg"
+    "foto": "605453120277.jpg",
+    "existencia": null
   },
   {
     "codigo": "049682900987",
@@ -945,7 +1062,8 @@ const PRODUCTOS = [
     "precio": 84.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "049682900987.jpg"
+    "foto": "049682900987.jpg",
+    "existencia": null
   },
   {
     "codigo": "025675250512",
@@ -953,7 +1071,8 @@ const PRODUCTOS = [
     "precio": 103.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "025675250512.jpg"
+    "foto": "025675250512.jpg",
+    "existencia": null
   },
   {
     "codigo": "7290002015116",
@@ -961,7 +1080,8 @@ const PRODUCTOS = [
     "precio": 102.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": ""
+    "foto": "",
+    "existencia": null
   },
   {
     "codigo": "794711001448",
@@ -969,7 +1089,8 @@ const PRODUCTOS = [
     "precio": 95.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "794711001448.jpg"
+    "foto": "794711001448.jpg",
+    "existencia": null
   },
   {
     "codigo": "052600112751",
@@ -977,7 +1098,8 @@ const PRODUCTOS = [
     "precio": 70.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": ""
+    "foto": "",
+    "existencia": null
   },
   {
     "codigo": "052600312755",
@@ -985,7 +1107,8 @@ const PRODUCTOS = [
     "precio": 70.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "052600312755.jpg"
+    "foto": "052600312755.jpg",
+    "existencia": null
   },
   {
     "codigo": "5410126116953",
@@ -993,7 +1116,8 @@ const PRODUCTOS = [
     "precio": 400.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "5410126116953.jpg"
+    "foto": "5410126116953.jpg",
+    "existencia": null
   },
   {
     "codigo": "087752010716",
@@ -1001,7 +1125,8 @@ const PRODUCTOS = [
     "precio": 283.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": "087752010716.jpg"
+    "foto": "087752010716.jpg",
+    "existencia": null
   },
   {
     "codigo": "087752013151",
@@ -1009,7 +1134,8 @@ const PRODUCTOS = [
     "precio": 264.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": ""
+    "foto": "",
+    "existencia": null
   },
   {
     "codigo": "087752016411",
@@ -1017,7 +1143,8 @@ const PRODUCTOS = [
     "precio": 500.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": "087752016411.jpeg"
+    "foto": "087752016411.jpeg",
+    "existencia": null
   },
   {
     "codigo": "087752006108",
@@ -1025,7 +1152,8 @@ const PRODUCTOS = [
     "precio": 345.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": "087752006108.JPG"
+    "foto": "087752006108.JPG",
+    "existencia": null
   },
   {
     "codigo": "087752008836",
@@ -1033,7 +1161,8 @@ const PRODUCTOS = [
     "precio": 345.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": "087752008836.JPG"
+    "foto": "087752008836.JPG",
+    "existencia": null
   },
   {
     "codigo": "087752019603",
@@ -1041,7 +1170,8 @@ const PRODUCTOS = [
     "precio": 300.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": "087752019603.jpg"
+    "foto": "087752019603.jpg",
+    "existencia": null
   },
   {
     "codigo": "087752019610",
@@ -1049,7 +1179,8 @@ const PRODUCTOS = [
     "precio": 300.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": "087752019610.jpg"
+    "foto": "087752019610.jpg",
+    "existencia": null
   },
   {
     "codigo": "087752021279",
@@ -1057,7 +1188,8 @@ const PRODUCTOS = [
     "precio": 300.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": "087752021279.jpg"
+    "foto": "087752021279.jpg",
+    "existencia": null
   },
   {
     "codigo": "087752002575",
@@ -1065,7 +1197,8 @@ const PRODUCTOS = [
     "precio": 300.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": "087752002575.JPG"
+    "foto": "087752002575.JPG",
+    "existencia": null
   },
   {
     "codigo": "087752007136",
@@ -1073,7 +1206,8 @@ const PRODUCTOS = [
     "precio": 300.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": "087752007136.jpg"
+    "foto": "087752007136.jpg",
+    "existencia": null
   },
   {
     "codigo": "087752023440",
@@ -1081,7 +1215,8 @@ const PRODUCTOS = [
     "precio": 500.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": "087752023440.jpg"
+    "foto": "087752023440.jpg",
+    "existencia": null
   },
   {
     "codigo": "087752007921",
@@ -1089,7 +1224,8 @@ const PRODUCTOS = [
     "precio": 577.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": "087752007921.jpg"
+    "foto": "087752007921.jpg",
+    "existencia": null
   },
   {
     "codigo": "087752007907",
@@ -1097,7 +1233,8 @@ const PRODUCTOS = [
     "precio": 500.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": "087752007907.jpg"
+    "foto": "087752007907.jpg",
+    "existencia": null
   },
   {
     "codigo": "087752023310",
@@ -1105,7 +1242,8 @@ const PRODUCTOS = [
     "precio": 300.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": "087752023310.jpg"
+    "foto": "087752023310.jpg",
+    "existencia": null
   },
   {
     "codigo": "087752006115",
@@ -1113,7 +1251,8 @@ const PRODUCTOS = [
     "precio": 345.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": "087752006115.jpg"
+    "foto": "087752006115.jpg",
+    "existencia": null
   },
   {
     "codigo": "087752002544",
@@ -1121,7 +1260,8 @@ const PRODUCTOS = [
     "precio": 250.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": "087752002544.JPG"
+    "foto": "087752002544.JPG",
+    "existencia": null
   },
   {
     "codigo": "087752021897",
@@ -1129,7 +1269,8 @@ const PRODUCTOS = [
     "precio": 476.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": "087752021897.jpeg"
+    "foto": "087752021897.jpeg",
+    "existencia": null
   },
   {
     "codigo": "087752023938",
@@ -1137,7 +1278,8 @@ const PRODUCTOS = [
     "precio": 500.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": "087752023938.jpg"
+    "foto": "087752023938.jpg",
+    "existencia": null
   },
   {
     "codigo": "087752028728",
@@ -1145,7 +1287,8 @@ const PRODUCTOS = [
     "precio": 356.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": "087752028728.jpg"
+    "foto": "087752028728.jpg",
+    "existencia": null
   },
   {
     "codigo": "087752036556",
@@ -1153,7 +1296,8 @@ const PRODUCTOS = [
     "precio": 354.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": "087752036556.jpg"
+    "foto": "087752036556.jpg",
+    "existencia": null
   },
   {
     "codigo": "087752002490",
@@ -1161,7 +1305,8 @@ const PRODUCTOS = [
     "precio": 140.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": "087752002490.JPG"
+    "foto": "087752002490.JPG",
+    "existencia": null
   },
   {
     "codigo": "087752005897",
@@ -1169,7 +1314,8 @@ const PRODUCTOS = [
     "precio": 140.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": "087752005897.jpg"
+    "foto": "087752005897.jpg",
+    "existencia": null
   },
   {
     "codigo": "087752017036",
@@ -1177,7 +1323,8 @@ const PRODUCTOS = [
     "precio": 500.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": "087752017036.jpg"
+    "foto": "087752017036.jpg",
+    "existencia": null
   },
   {
     "codigo": "852884001457",
@@ -1185,7 +1332,8 @@ const PRODUCTOS = [
     "precio": 840.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": "852884001457.jpg"
+    "foto": "852884001457.jpg",
+    "existencia": null
   },
   {
     "codigo": "087752023426",
@@ -1193,7 +1341,8 @@ const PRODUCTOS = [
     "precio": 600.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": "087752023426.jpg"
+    "foto": "087752023426.jpg",
+    "existencia": null
   },
   {
     "codigo": "852884003567",
@@ -1201,7 +1350,8 @@ const PRODUCTOS = [
     "precio": 840.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": "852884003567.jpg"
+    "foto": "852884003567.jpg",
+    "existencia": null
   },
   {
     "codigo": "852884001433",
@@ -1209,7 +1359,8 @@ const PRODUCTOS = [
     "precio": 790.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": "852884001433.jpg"
+    "foto": "852884001433.jpg",
+    "existencia": null
   },
   {
     "codigo": "852884003550",
@@ -1217,7 +1368,8 @@ const PRODUCTOS = [
     "precio": 1371.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": "852884003550.jpg"
+    "foto": "852884003550.jpg",
+    "existencia": null
   },
   {
     "codigo": "087752005644",
@@ -1225,7 +1377,8 @@ const PRODUCTOS = [
     "precio": 350.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": "087752005644.jpg"
+    "foto": "087752005644.jpg",
+    "existencia": null
   },
   {
     "codigo": "666392875246",
@@ -1233,7 +1386,8 @@ const PRODUCTOS = [
     "precio": 300.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": "666392875246.jpg"
+    "foto": "666392875246.jpg",
+    "existencia": null
   },
   {
     "codigo": "666392875239",
@@ -1241,7 +1395,8 @@ const PRODUCTOS = [
     "precio": 300.0,
     "familia": "VINOS IMPORTADOS",
     "unidad": "Pz",
-    "foto": "666392875239.jpg"
+    "foto": "666392875239.jpg",
+    "existencia": null
   },
   {
     "codigo": "838948007726",
@@ -1249,7 +1404,8 @@ const PRODUCTOS = [
     "precio": 260.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "838948007726.jpg"
+    "foto": "838948007726.jpg",
+    "existencia": null
   },
   {
     "codigo": "838948007412",
@@ -1257,7 +1413,8 @@ const PRODUCTOS = [
     "precio": 260.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "838948007412.jpg"
+    "foto": "838948007412.jpg",
+    "existencia": null
   },
   {
     "codigo": "013113347344",
@@ -1265,7 +1422,8 @@ const PRODUCTOS = [
     "precio": 145.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "013113347344.jpg"
+    "foto": "013113347344.jpg",
+    "existencia": null
   },
   {
     "codigo": "013113347351",
@@ -1273,7 +1431,8 @@ const PRODUCTOS = [
     "precio": 145.0,
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
-    "foto": "013113347351.jpg"
+    "foto": "013113347351.jpg",
+    "existencia": null
   }
 ];
 
