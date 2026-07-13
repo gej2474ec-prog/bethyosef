@@ -298,7 +298,7 @@ const PRODUCTOS = [
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
     "foto": "857907008284.jpg",
-    "existencia": 0.0
+    "existencia": 10.0
   },
   {
     "codigo": "710069404540",
@@ -316,7 +316,7 @@ const PRODUCTOS = [
     "familia": "ABARROTES IMPORTADOS",
     "unidad": "Pz",
     "foto": "815871012409.jpg",
-    "existencia": 0.0
+    "existencia": 5.0
   },
   {
     "codigo": "077245107931",
@@ -394,7 +394,7 @@ const PRODUCTOS = [
     "codigo": "073490124907",
     "descripcion": "KEDEM GRAPE JUICE CONCORD PLASTIC BOTTLE 32 OZ 946 ML",
     "precio": 141.0,
-    "familia": "VINOS IMPORTADOS",
+    "familia": "JUGO IMPORTADO",
     "unidad": "Pz",
     "foto": "073490124907.jpg",
     "existencia": 10.0
@@ -403,7 +403,7 @@ const PRODUCTOS = [
     "codigo": "073314648817",
     "descripcion": "NATURES OWN JUGO DE UVA 1.89 LT",
     "precio": 163.0,
-    "familia": "VINOS IMPORTADOS",
+    "familia": "JUGO IMPORTADO",
     "unidad": "Pz",
     "foto": "073314648817.jpg",
     "existencia": 5.0
@@ -412,7 +412,7 @@ const PRODUCTOS = [
     "codigo": "07349043",
     "descripcion": "KEDEM CONCORD GRAPE JUICE 650 ML",
     "precio": 89.0,
-    "familia": "VINOS IMPORTADOS",
+    "familia": "JUGO IMPORTADO",
     "unidad": "Pz",
     "foto": "07349043.jpg",
     "existencia": 4.0
@@ -1064,15 +1064,6 @@ const PRODUCTOS = [
     "unidad": "Pz",
     "foto": "087752010716.jpg",
     "existencia": 120.0
-  },
-  {
-    "codigo": "087752013151",
-    "descripcion": "JENUESSE BLACK MUSCAT 750 ML",
-    "precio": 264.0,
-    "familia": "VINOS IMPORTADOS",
-    "unidad": "Pz",
-    "foto": "",
-    "existencia": 650.0
   },
   {
     "codigo": "087752016411",
