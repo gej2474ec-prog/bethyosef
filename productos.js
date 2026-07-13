@@ -205,7 +205,7 @@ const PRODUCTOS = [
     "codigo": "850775007434",
     "descripcion": "TIRAT ZVI TURKEY BREAST SMOKED I2OZ",
     "precio": 270.0,
-    "familia": "REFRIGERADO IMPORTADO",
+    "familia": "CARNES FRIAS IMPORTADAS",
     "unidad": "PZ",
     "foto": "850775007434.jpg",
     "existencia": 16.0
@@ -214,7 +214,7 @@ const PRODUCTOS = [
     "codigo": "850775007410",
     "descripcion": "TIRAT ZVI TURKEY BREAST MEXICAN 120Z",
     "precio": 270.0,
-    "familia": "REFRIGERADO IMPORTADO",
+    "familia": "CARNES FRIAS IMPORTADAS",
     "unidad": "PZ",
     "foto": "850775007410.jpg",
     "existencia": 20.0
