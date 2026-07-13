@@ -892,7 +892,7 @@ const PRODUCTOS = [
     "familia": "VINO IMPORTADO",
     "unidad": "PZ",
     "foto": "087752034514.jpg",
-    "existencia": 34.0
+    "existencia": 45.0
   },
   {
     "codigo": "027000419205",
