@@ -235,7 +235,15 @@
     @media (max-width: 600px){
       header .logo{width:65%;max-width:240px;height:auto}
       header.compacto .logo{width:auto;max-width:150px;height:32px}
-      .barra{top:51px}
+      .barra{top:51px;gap:8px}
+      /* Familias en UNA sola fila que se desliza de lado */
+      .filtros{
+        flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;
+        width:100%;padding-bottom:2px;-webkit-overflow-scrolling:touch;
+      }
+      .filtros::-webkit-scrollbar{display:none}
+      .filtros{scrollbar-width:none}
+      .chip{flex:0 0 auto}
       .grid{grid-template-columns:1fr;gap:10px;padding:12px}
       .card{flex-direction:row;align-items:flex-start}
       .card:hover{transform:none;box-shadow:0 1px 3px rgba(0,0,0,.06)}
