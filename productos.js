@@ -3368,3 +3368,8 @@ const PRECIOS_CLIENTE = {
     "9313448": 105.3
   }
 };
+
+const DESCUENTOS = {
+  "800": 10.0,
+  "950": 15.0
+};

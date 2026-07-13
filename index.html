@@ -280,7 +280,7 @@
     <div class="pie" id="pieCarrito"></div>
   </aside>
 
-  <script src="productos.js?v=ede91a13"></script>
+  <script src="productos.js?v=6a3d061d"></script>
   <script>
     // --- Rellenar textos de la tienda ---
     document.getElementById('logo').alt = CONFIG.nombreTienda;
@@ -320,6 +320,14 @@
       PRECIOS_NORM[k.trim().toLowerCase()] = dst;
     });
 
+    // Clientes con % de descuento (aplica a todos los productos)
+    const DESC = (typeof DESCUENTOS !== 'undefined') ? DESCUENTOS : {};
+    const DESC_NORM = {};
+    Object.keys(DESC).forEach(k => { DESC_NORM[k.trim().toLowerCase()] = Number(DESC[k]) || 0; });
+    function descuentoCliente(){
+      return DESC_NORM[clienteActual.trim().toLowerCase()] || 0;
+    }
+
     const PROD_POR_COD = {};
     PRODUCTOS.forEach(p => { if(p.codigo) PROD_POR_COD[p.codigo] = p; });
 
@@ -336,6 +344,11 @@
       if(lista){
         const v = lista[normCod(p.codigo)];
         if(v != null) return v;
+      }
+      // Si el cliente tiene % de descuento, se aplica a la lista
+      const pct = descuentoCliente();
+      if(pct > 0){
+        return Math.round(p.precio * (1 - pct / 100) * 100) / 100;
       }
       return p.precio;
     }
@@ -754,6 +767,9 @@
         clienteMsg.className = "";
       }else if(listaCliente()){
         clienteMsg.textContent = "✓ Precios de mayoreo";
+        clienteMsg.className = "ok";
+      }else if(descuentoCliente() > 0){
+        clienteMsg.textContent = "✓ " + descuentoCliente() + "% de descuento";
         clienteMsg.className = "ok";
       }else{
         clienteMsg.textContent = "Número no reconocido — verás precios de lista";
