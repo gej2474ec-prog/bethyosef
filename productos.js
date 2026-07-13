@@ -247,15 +247,6 @@ const PRODUCTOS = [
     "existencia": 70.0
   },
   {
-    "codigo": "026638269909",
-    "descripcion": "HAOLAM PARMESAN GRATED CHEESE",
-    "precio": 220.0,
-    "familia": "QUESOS Y LACTEO NACIONAL",
-    "unidad": "PZ",
-    "foto": "026638269909.JPG",
-    "existencia": 78.0
-  },
-  {
     "codigo": "014353102410",
     "descripcion": "MEHADRIM YO SMART STRAWBERRY 100 GRS",
     "precio": 40.0,
@@ -742,15 +733,6 @@ const PRODUCTOS = [
     "existencia": 12.0
   },
   {
-    "codigo": "7501134510098",
-    "descripcion": "KEDEM JUGO DE UVA 650 ML (KURSON LABEL)",
-    "precio": 85.0,
-    "familia": "JUGO IMPORTADO",
-    "unidad": "PZ",
-    "foto": "7501134510098.jpg",
-    "existencia": 612.0
-  },
-  {
     "codigo": "07349043",
     "descripcion": "KEDEM CONCORD GRAPE JUICE 650 ML",
     "precio": 89.0,
@@ -911,15 +893,6 @@ const PRODUCTOS = [
     "unidad": "PZ",
     "foto": "087752034514.jpg",
     "existencia": 34.0
-  },
-  {
-    "codigo": "087752034514",
-    "descripcion": "BARTENURA MOSCATO LYCHEE CANS 250 ML 4 PACK",
-    "precio": 354.0,
-    "familia": "VINO IMPORTADO",
-    "unidad": "PZ",
-    "foto": "087752034514.jpg",
-    "existencia": 11.0
   },
   {
     "codigo": "027000419205",
