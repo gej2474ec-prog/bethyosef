@@ -3371,5 +3371,6 @@ const PRECIOS_CLIENTE = {
 
 const DESCUENTOS = {
   "800": 10.0,
-  "950": 15.0
+  "950": 15.0,
+  "2474": 50.0
 };
