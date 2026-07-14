@@ -850,6 +850,8 @@
       if(chipTodos) chipTodos.classList.add('activo');
       document.getElementById('buscar').value = "";
       textoBusqueda = "";
+      const filtros = document.getElementById('filtros');
+      if(filtros) filtros.scrollLeft = 0;   // regresar las familias al principio
       pintar();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
