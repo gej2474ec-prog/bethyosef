@@ -36,8 +36,8 @@
       max-width:300px;width:70%;height:auto;aspect-ratio:1088/323;display:block;margin:0;
       transition:max-width .2s ease, width .2s ease, height .2s ease;
     }
-    /* Al hacer scroll: logo chico a la izquierda */
-    header.compacto{justify-content:flex-start;padding:8px 16px}
+    /* Al hacer scroll: logo chico pero CENTRADO */
+    header.compacto{padding:8px 16px}
     header.compacto .logo{max-width:170px;width:auto;height:40px}
     /* Espaciador: reserva el lugar del encabezado fijo (evita el brinco) */
     #spacer{width:100%}
@@ -313,6 +313,7 @@
     // --- Rellenar textos de la tienda ---
     document.getElementById('logo').alt = CONFIG.nombreTienda;
     document.title = CONFIG.nombreTienda + " · Catálogo";
+    document.getElementById('pie').textContent = CONFIG.nombreTienda;
 
     let categoriaActual = "Todos";
     let textoBusqueda = "";
