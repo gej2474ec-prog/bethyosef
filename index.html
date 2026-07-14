@@ -555,7 +555,10 @@
       }
       if(e.target.classList.contains('btn-add')){
         let cant = parseFloat(input.value);
-        if(!cant || cant <= 0) cant = 1;
+        if(!cant || cant <= 0){
+          alert('Pon una cantidad mayor a 0 para agregar.');
+          return;
+        }
 
         // No dejar que el total (carrito + esto) pase de la existencia
         if(tope !== null){
