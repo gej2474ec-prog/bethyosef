@@ -33,7 +33,7 @@
       transition:padding .2s ease;
     }
     header .logo{
-      max-width:300px;width:70%;height:auto;aspect-ratio:1088/323;display:block;margin:0;
+      max-width:300px;width:70%;height:auto;aspect-ratio:1088/323;display:block;margin:0;cursor:pointer;
       transition:max-width .2s ease, width .2s ease, height .2s ease;
     }
     /* Al hacer scroll: logo chico pero CENTRADO */
@@ -841,6 +841,18 @@
       if(window.scrollY > 20) elHeader.classList.add('compacto');
       else elHeader.classList.remove('compacto');
     }, { passive: true });
+
+    // Tocar el logo = ir a inicio (arriba, "Todos", sin búsqueda)
+    document.getElementById('logo').addEventListener('click', () => {
+      categoriaActual = "Todos";
+      document.querySelectorAll('.chip').forEach(c => c.classList.remove('activo'));
+      const chipTodos = [...document.querySelectorAll('.chip')].find(c => c.textContent === "Todos");
+      if(chipTodos) chipTodos.classList.add('activo');
+      document.getElementById('buscar').value = "";
+      textoBusqueda = "";
+      pintar();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 
     // Arranque
     aplicarCliente();
