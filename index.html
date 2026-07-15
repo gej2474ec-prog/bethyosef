@@ -59,13 +59,16 @@
       display:flex;gap:10px;flex-wrap:wrap;
       align-items:center;justify-content:center;
     }
+    .buscar-wrap{flex:1;min-width:200px;max-width:420px;position:relative;display:flex}
+    .buscar-wrap .ico-buscar{position:absolute;left:15px;top:50%;transform:translateY(-50%);pointer-events:none}
     #buscar{
-      flex:1;min-width:200px;max-width:420px;
-      padding:11px 16px;
-      border:1px solid var(--borde);border-radius:999px;
+      width:100%;
+      padding:11px 16px 11px 42px;
+      border:2px solid var(--acento);border-radius:999px;
       font-size:1rem;outline:none;
+      box-shadow:0 2px 6px rgba(225,37,27,.15);
     }
-    #buscar:focus{border-color:var(--acento)}
+    #buscar:focus{border-color:var(--acento-osc);box-shadow:0 0 0 3px rgba(225,37,27,.15)}
     .filtros{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
     .hint-fam{display:none}
     @keyframes desliza{0%,100%{transform:translateX(-3px)}50%{transform:translateX(3px)}}
@@ -345,7 +348,10 @@
   </div>
 
   <div class="barra">
-    <input id="buscar" type="search" placeholder="🔍 Buscar por descripción o código...">
+    <div class="buscar-wrap">
+      <svg class="ico-buscar" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#e1251b" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input id="buscar" type="search" placeholder="Buscar por descripción o código...">
+    </div>
     <button id="btnCotiza" class="btn-cotiza" type="button">🧾 Cotización</button>
     <div class="filtros" id="filtros"></div>
     <div class="hint-fam"><span>→</span> desliza para más categorías <span>→</span></div>
