@@ -387,7 +387,7 @@
     <div class="pie" id="cotizaPie"></div>
   </aside>
 
-  <script src="productos.js?v=bda26679"></script>
+  <script src="productos.js?v=d0ee760d"></script>
   <script>
     // --- Rellenar textos de la tienda ---
     document.getElementById('logo').alt = CONFIG.nombreTienda;
@@ -457,6 +457,16 @@
         return Math.round(p.precio * (1 - pct / 100) * 100) / 100;
       }
       return p.precio;
+    }
+
+    // Precio para cotización: mismo criterio (precio especial o % descuento) sobre un precio base
+    function precioClienteDe(codigo, base){
+      base = Number(base) || 0;
+      const lista = listaCliente();
+      if(lista){ const v = lista[normCod(codigo)]; if(v != null) return v; }
+      const pct = descuentoCliente();
+      if(pct > 0) return Math.round(base * (1 - pct / 100) * 100) / 100;
+      return base;
     }
 
     // --- Inventario en vivo (leido de la Hoja de Google) ---
@@ -955,6 +965,7 @@
 
     document.getElementById('btnCotiza').onclick = () => {
       fondoCotiza.style.display = 'block'; elCotiza.style.display = 'flex';
+      renderCotiza();   // refrescar precios según el cliente actual
     };
     function cerrarCotiza(){ fondoCotiza.style.display = 'none'; elCotiza.style.display = 'none'; }
     document.getElementById('cerrarCotiza').onclick = cerrarCotiza;
@@ -982,7 +993,7 @@
       const b = e.target.closest('.cot-add'); if(!b) return;
       const p = cotizaResultados._res[parseInt(b.dataset.i, 10)];
       if(!p) return;
-      cotizaItems.push({ tipo:'lista', codigo:p.codigo, desc:p.descripcion, unidad:p.unidad, precio:p.precio || 0, cant:1 });
+      cotizaItems.push({ tipo:'lista', codigo:p.codigo, desc:p.descripcion, unidad:p.unidad, precioBase:p.precio || 0, cant:1 });
       cotizaBuscar.value = ''; cotizaResultados.innerHTML = ''; cotizaResultados._res = [];
       renderCotiza();
     });
@@ -1014,12 +1025,13 @@
             <button class="cmas" type="button">+</button>
           </div>`;
         if(i.tipo === 'lista'){
-          const sub = i.precio * i.cant; total += sub;
+          const precio = precioClienteDe(i.codigo, i.precioBase);
+          const sub = precio * i.cant; total += sub;
           const cod = i.codigo ? 'Cód. ' + i.codigo + ' · ' : '';
           const u = i.unidad ? ' / ' + i.unidad : '';
           return `<div class="cot-item" data-idx="${idx}"><div class="d">
             <div class="dn">${i.desc}</div>
-            <div class="dc">${cod}${formatoPrecio(i.precio)}${u}</div>
+            <div class="dc">${cod}${formatoPrecio(precio)}${u}</div>
             <div class="df">${stepper}<div class="sub">${formatoPrecio(sub)}</div></div>
             <button class="quitar" type="button">Quitar</button>
           </div></div>`;
@@ -1075,10 +1087,11 @@
       if(conPrecio.length){
         msg += '— CON PRECIO —\n';
         conPrecio.forEach(i => {
-          const s = i.precio * i.cant; total += s;
+          const precio = precioClienteDe(i.codigo, i.precioBase);
+          const s = precio * i.cant; total += s;
           const u = i.unidad ? ' ' + i.unidad : '';
           const cod = i.codigo ? ' (Cód. ' + i.codigo + ')' : '';
-          msg += `• ${fmtCant(i.cant)}${u} ${i.desc}${cod} — ${formatoPrecio(i.precio)} = ${formatoPrecio(s)}\n`;
+          msg += `• ${fmtCant(i.cant)}${u} ${i.desc}${cod} — ${formatoPrecio(precio)} = ${formatoPrecio(s)}\n`;
         });
         msg += 'Subtotal: ' + formatoPrecio(total) + '\n\n';
       }
@@ -1086,6 +1099,23 @@
         msg += '— POR COTIZAR —\n';
         especiales.forEach(i => { msg += `• ${fmtCant(i.cant)} — ${i.desc}\n`; });
       }
+
+      // Guardar la cotización en la Hoja de Google
+      if(CONFIG.pedidosURL){
+        try{
+          fetch(CONFIG.pedidosURL, {
+            method:'POST', mode:'no-cors', headers:{ 'Content-Type':'text/plain;charset=utf-8' },
+            body: JSON.stringify({
+              tipo:'cotizacion', nombre: nombre, cliente: clienteActual || '',
+              items: cotizaItems.map(i => ({
+                tipo: i.tipo, codigo: i.codigo || '', desc: i.desc, cant: fmtCant(i.cant),
+                precio: (i.tipo === 'lista') ? precioClienteDe(i.codigo, i.precioBase) : 0
+              }))
+            })
+          });
+        }catch(err){}
+      }
+
       window.open('https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(msg), '_blank');
     }
     renderCotiza();
