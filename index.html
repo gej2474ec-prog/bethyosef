@@ -1080,23 +1080,33 @@
       const conPrecio = cotizaItems.filter(i => i.tipo === 'lista');
       const especiales = cotizaItems.filter(i => i.tipo === 'especial');
       let total = 0;
-      let msg = '🧾 SOLICITUD DE COTIZACIÓN\n';
+      let msg = (CONFIG.nombreTienda || 'BETH YOSEF') + ' · COTIZACIÓN\n';
       if(nombre) msg += 'Cliente: ' + nombre + '\n';
       if(clienteActual) msg += 'N° cliente: ' + clienteActual + '\n';
       msg += '\n';
+
       if(conPrecio.length){
-        msg += '— CON PRECIO —\n';
-        conPrecio.forEach(i => {
+        // Tabla alineada (monoespaciada): CODIGO, CANT, PRODUCTO, TOTAL
+        const filas = conPrecio.map(i => {
           const precio = precioClienteDe(i.codigo, i.precioBase);
-          const s = precio * i.cant; total += s;
-          const u = i.unidad ? ' ' + i.unidad : '';
-          const cod = i.codigo ? ' (Cód. ' + i.codigo + ')' : '';
-          msg += `• ${fmtCant(i.cant)}${u} ${i.desc}${cod} — ${formatoPrecio(precio)} = ${formatoPrecio(s)}\n`;
+          const sub = precio * i.cant; total += sub;
+          return { cod:String(i.codigo || ''), cant:String(fmtCant(i.cant)), prod:String(i.desc || ''), tot:formatoPrecio(sub) };
         });
-        msg += 'Subtotal: ' + formatoPrecio(total) + '\n\n';
+        const wCod = Math.max(6, ...filas.map(f => f.cod.length));
+        const wCant = Math.max(4, ...filas.map(f => f.cant.length));
+        const wTot = Math.max(6, ...filas.map(f => f.tot.length), formatoPrecio(total).length);
+        const wProd = Math.max(8, Math.min(18, 42 - wCod - wCant - wTot - 3));
+        const fila = (c, ca, p, t) => c.padEnd(wCod) + ' ' + ca.padStart(wCant) + ' ' + p.slice(0, wProd).padEnd(wProd) + ' ' + t.padStart(wTot);
+        let tabla = fila('CODIGO', 'CANT', 'PRODUCTO', 'TOTAL') + '\n';
+        filas.forEach(f => { tabla += fila(f.cod, f.cant, f.prod, f.tot) + '\n'; });
+        const ancho = wCod + 1 + wCant + 1 + wProd + 1 + wTot;
+        tabla += '-'.repeat(ancho) + '\n';
+        const gt = formatoPrecio(total);
+        tabla += 'GRAN TOTAL'.padEnd(Math.max(0, ancho - gt.length)) + gt + '\n';
+        msg += '```\n' + tabla + '```\n';
       }
       if(especiales.length){
-        msg += '— POR COTIZAR —\n';
+        msg += '\nPOR COTIZAR:\n';
         especiales.forEach(i => { msg += `• ${fmtCant(i.cant)} — ${i.desc}\n`; });
       }
 
