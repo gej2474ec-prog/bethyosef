@@ -1205,9 +1205,12 @@
       if(nombre) sub += ' · ' + nombre;
       if(clienteActual) sub += ' · Cliente ' + clienteActual;
       doc.text(sub, 14, y);
+      const fechaStr = new Date().toLocaleDateString('es-MX', { day: '2-digit', month: '2-digit', year: 'numeric' });
+      doc.setFontSize(10);
+      doc.text('Fecha: ' + fechaStr, 14, y + 5.5);
 
       doc.autoTable({
-        startY: y + 5,
+        startY: y + 11,
         head: [['Código', 'Producto', 'Unidad', 'Cant.', 'Precio', 'Total']],
         body: body,
         foot: [['', '', '', '', 'GRAN TOTAL', formatoPrecio(total)]],
