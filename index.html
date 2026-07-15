@@ -391,7 +391,7 @@
     <div class="pie" id="cotizaPie"></div>
   </aside>
 
-  <script src="productos.js?v=b41b3aaf"></script>
+  <script src="productos.js?v=246bba97"></script>
   <script>
     // --- Rellenar textos de la tienda ---
     document.getElementById('logo').alt = CONFIG.nombreTienda;
@@ -438,16 +438,18 @@
       return DESC_NORM[clienteActual.trim().toLowerCase()] || 0;
     }
 
-    // Clientes restringidos: solo ven los productos de su hoja de precios
-    const REST = (typeof RESTRINGIDOS !== 'undefined') ? RESTRINGIDOS : [];
-    const REST_NORM = new Set(REST.map(x => String(x).trim().toLowerCase()));
+    // Clientes restringidos: solo ven los códigos listados en la pestaña "Restringidos"
+    const REST = (typeof RESTRINGIDOS !== 'undefined') ? RESTRINGIDOS : {};
+    const REST_NORM = {};
+    Object.keys(REST).forEach(k => {
+      REST_NORM[k.trim().toLowerCase()] = new Set((REST[k] || []).map(normCod));
+    });
     function clienteRestringido(){
-      return REST_NORM.has(clienteActual.trim().toLowerCase());
+      return REST_NORM.hasOwnProperty(clienteActual.trim().toLowerCase());
     }
-    // Conjunto de códigos que puede ver el cliente restringido (de su lista de precios)
+    // Códigos que puede ver ese cliente restringido
     function codigosPermitidos(){
-      const lista = listaCliente();
-      return lista ? new Set(Object.keys(lista)) : new Set();
+      return REST_NORM[clienteActual.trim().toLowerCase()] || new Set();
     }
 
     const PROD_POR_COD = {};
