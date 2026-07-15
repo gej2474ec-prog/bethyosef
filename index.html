@@ -289,6 +289,8 @@
     #enviarCotiza:hover{background:var(--verde-osc)}
     #descargarCotiza{width:100%;margin-top:8px;background:#fff;color:var(--acento);border:2px solid var(--acento);padding:12px;border-radius:12px;font-weight:700;font-size:1rem;cursor:pointer}
     #descargarCotiza:hover{background:#fff5f5}
+    #terminarCotiza{width:100%;margin-top:8px;background:var(--verde);color:#fff;border:none;padding:13px;border-radius:12px;font-weight:700;font-size:1rem;cursor:pointer}
+    #terminarCotiza:hover{background:var(--verde-osc)}
     .cotizaVacio{text-align:center;color:var(--suave);padding:20px}
 
     /* ---------- En CELULAR: vista tipo lista (foto chica a la izquierda) ---------- */
@@ -1047,11 +1049,11 @@
       pie.innerHTML = `
         <div style="display:flex;justify-content:space-between;font-weight:800;font-size:1.05rem;margin-bottom:6px"><span>Subtotal (con precio)</span><span>${formatoPrecio(total)}</span></div>
         <div style="font-size:.75rem;color:var(--suave);margin-bottom:10px">Los artículos "por cotizar" se te pasan a mano.</div>
-        <button id="enviarCotiza" type="button">💬 Enviar cotización por WhatsApp</button>
         <button id="descargarCotiza" type="button">📄 Descargar PDF</button>
+        <button id="terminarCotiza" type="button">✅ Terminar cotización</button>
       `;
-      document.getElementById('enviarCotiza').onclick = enviarCotiza;
       document.getElementById('descargarCotiza').onclick = descargarPDF;
+      document.getElementById('terminarCotiza').onclick = terminarCotiza;
     }
 
     // Cantidades y quitar dentro de la cotización
@@ -1078,59 +1080,33 @@
       renderCotiza();
     });
 
-    function enviarCotiza(){
-      if(cotizaItems.length === 0) return;
+    // Guarda la cotización en la Hoja de Google (pestaña Cotizaciones)
+    function guardarCotizaEnHoja(){
+      if(!CONFIG.pedidosURL || cotizaItems.length === 0) return;
       const nombre = document.getElementById('cotizaNombre').value.trim();
-      const conPrecio = cotizaItems.filter(i => i.tipo === 'lista');
-      const especiales = cotizaItems.filter(i => i.tipo === 'especial');
-      let total = 0;
-      let msg = (CONFIG.nombreTienda || 'BETH YOSEF') + ' · COTIZACIÓN\n';
-      if(nombre) msg += 'Cliente: ' + nombre + '\n';
-      if(clienteActual) msg += 'N° cliente: ' + clienteActual + '\n';
-      msg += '\n';
-
-      if(conPrecio.length){
-        // Tabla alineada (monoespaciada): CODIGO, CANT, PRODUCTO, TOTAL
-        const filas = conPrecio.map(i => {
-          const precio = precioClienteDe(i.codigo, i.precioBase);
-          const sub = precio * i.cant; total += sub;
-          return { cod:String(i.codigo || ''), cant:String(fmtCant(i.cant)), prod:String(i.desc || ''), tot:formatoPrecio(sub) };
+      try{
+        fetch(CONFIG.pedidosURL, {
+          method:'POST', mode:'no-cors', headers:{ 'Content-Type':'text/plain;charset=utf-8' },
+          body: JSON.stringify({
+            tipo:'cotizacion', nombre: nombre, cliente: clienteActual || '',
+            items: cotizaItems.map(i => ({
+              tipo: i.tipo, codigo: i.codigo || '', desc: i.desc, cant: fmtCant(i.cant),
+              precio: (i.tipo === 'lista') ? precioClienteDe(i.codigo, i.precioBase) : 0
+            }))
+          })
         });
-        const wCod = Math.max(6, ...filas.map(f => f.cod.length));
-        const wCant = Math.max(4, ...filas.map(f => f.cant.length));
-        const wTot = Math.max(6, ...filas.map(f => f.tot.length), formatoPrecio(total).length);
-        const wProd = Math.max(8, Math.min(18, 42 - wCod - wCant - wTot - 3));
-        const fila = (c, ca, p, t) => c.padEnd(wCod) + ' ' + ca.padStart(wCant) + ' ' + p.slice(0, wProd).padEnd(wProd) + ' ' + t.padStart(wTot);
-        let tabla = fila('CODIGO', 'CANT', 'PRODUCTO', 'TOTAL') + '\n';
-        filas.forEach(f => { tabla += fila(f.cod, f.cant, f.prod, f.tot) + '\n'; });
-        const ancho = wCod + 1 + wCant + 1 + wProd + 1 + wTot;
-        tabla += '-'.repeat(ancho) + '\n';
-        const gt = formatoPrecio(total);
-        tabla += 'GRAN TOTAL'.padEnd(Math.max(0, ancho - gt.length)) + gt + '\n';
-        msg += '```\n' + tabla + '```\n';
-      }
-      if(especiales.length){
-        msg += '\nPOR COTIZAR:\n';
-        especiales.forEach(i => { msg += `• ${fmtCant(i.cant)} — ${i.desc}\n`; });
-      }
+      }catch(err){}
+    }
 
-      // Guardar la cotización en la Hoja de Google
-      if(CONFIG.pedidosURL){
-        try{
-          fetch(CONFIG.pedidosURL, {
-            method:'POST', mode:'no-cors', headers:{ 'Content-Type':'text/plain;charset=utf-8' },
-            body: JSON.stringify({
-              tipo:'cotizacion', nombre: nombre, cliente: clienteActual || '',
-              items: cotizaItems.map(i => ({
-                tipo: i.tipo, codigo: i.codigo || '', desc: i.desc, cant: fmtCant(i.cant),
-                precio: (i.tipo === 'lista') ? precioClienteDe(i.codigo, i.precioBase) : 0
-              }))
-            })
-          });
-        }catch(err){}
-      }
-
-      window.open('https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(msg), '_blank');
+    // Terminar cotización: guarda, limpia y regresa al inicio
+    function terminarCotiza(){
+      if(cotizaItems.length === 0){ cerrarCotiza(); return; }
+      guardarCotizaEnHoja();
+      cotizaItems = [];
+      document.getElementById('cotizaNombre').value = '';
+      renderCotiza();
+      cerrarCotiza();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     // Cargar la librería de PDF (jsPDF) solo cuando se necesita
