@@ -1215,7 +1215,7 @@ const PRODUCTOS = [
     "precio": 689.0,
     "familia": "VINO IMPORTADO",
     "unidad": "PZ",
-    "foto": "",
+    "foto": "087752016282.jpg",
     "existencia": null
   },
   {
@@ -1233,7 +1233,7 @@ const PRODUCTOS = [
     "precio": 632.0,
     "familia": "VINO IMPORTADO",
     "unidad": "PZ",
-    "foto": "",
+    "foto": "087752017746.jpg",
     "existencia": null
   },
   {
@@ -1386,7 +1386,7 @@ const PRODUCTOS = [
     "precio": 717.0,
     "familia": "VINO IMPORTADO",
     "unidad": "PZ",
-    "foto": "",
+    "foto": "844510015280.jpg",
     "existencia": null
   },
   {
