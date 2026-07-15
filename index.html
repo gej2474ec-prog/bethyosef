@@ -287,6 +287,8 @@
     #cotiza .pie{padding:16px 20px;border-top:1px solid var(--borde)}
     #enviarCotiza{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--verde);color:#fff;border:none;padding:14px;border-radius:12px;font-weight:700;font-size:1rem;cursor:pointer}
     #enviarCotiza:hover{background:var(--verde-osc)}
+    #descargarCotiza{width:100%;margin-top:8px;background:#fff;color:var(--acento);border:2px solid var(--acento);padding:12px;border-radius:12px;font-weight:700;font-size:1rem;cursor:pointer}
+    #descargarCotiza:hover{background:#fff5f5}
     .cotizaVacio{text-align:center;color:var(--suave);padding:20px}
 
     /* ---------- En CELULAR: vista tipo lista (foto chica a la izquierda) ---------- */
@@ -1046,8 +1048,10 @@
         <div style="display:flex;justify-content:space-between;font-weight:800;font-size:1.05rem;margin-bottom:6px"><span>Subtotal (con precio)</span><span>${formatoPrecio(total)}</span></div>
         <div style="font-size:.75rem;color:var(--suave);margin-bottom:10px">Los artículos "por cotizar" se te pasan a mano.</div>
         <button id="enviarCotiza" type="button">💬 Enviar cotización por WhatsApp</button>
+        <button id="descargarCotiza" type="button">📄 Descargar PDF</button>
       `;
       document.getElementById('enviarCotiza').onclick = enviarCotiza;
+      document.getElementById('descargarCotiza').onclick = descargarPDF;
     }
 
     // Cantidades y quitar dentro de la cotización
@@ -1128,6 +1132,53 @@
 
       window.open('https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(msg), '_blank');
     }
+
+    // Descargar la cotización como PDF (hoja con tabla completa)
+    function descargarPDF(){
+      if(cotizaItems.length === 0) return;
+      const nombre = document.getElementById('cotizaNombre').value.trim();
+      const esc = s => String(s == null ? '' : s).replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+      let total = 0;
+      let filas = '';
+      cotizaItems.forEach(i => {
+        if(i.tipo === 'lista'){
+          const precio = precioClienteDe(i.codigo, i.precioBase);
+          const sub = precio * i.cant; total += sub;
+          filas += `<tr><td>${esc(i.codigo)}</td><td>${esc(i.desc)}</td><td>${esc(i.unidad)}</td><td class="r">${fmtCant(i.cant)}</td><td class="r">${formatoPrecio(precio)}</td><td class="r">${formatoPrecio(sub)}</td></tr>`;
+        }else{
+          filas += `<tr><td></td><td>${esc(i.desc)}</td><td></td><td class="r">${fmtCant(i.cant)}</td><td class="r">—</td><td class="r" style="color:#b45309">Por cotizar</td></tr>`;
+        }
+      });
+      const doc = `<!doctype html><html lang="es"><head><meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Cotización ${CONFIG.nombreTienda || ''}</title>
+        <style>
+          body{font-family:Arial,Helvetica,sans-serif;color:#1f2937;padding:22px;max-width:820px;margin:0 auto}
+          h1{color:#e1251b;margin:0 0 2px;font-size:24px}
+          .info{color:#555;margin-bottom:16px;font-size:14px}
+          table{width:100%;border-collapse:collapse;font-size:13px}
+          th{background:#e1251b;color:#fff;padding:8px;text-align:left}
+          th.r,td.r{text-align:right}
+          td{padding:7px 8px;border-bottom:1px solid #eee}
+          tfoot td{font-weight:bold;font-size:16px;border-top:2px solid #333;padding-top:10px}
+          .btn{background:#e1251b;color:#fff;border:none;padding:13px 22px;border-radius:8px;font-weight:bold;cursor:pointer;margin-top:18px;font-size:15px}
+          @media print{.noprint{display:none}}
+        </style></head><body>
+        <h1>${esc(CONFIG.nombreTienda || 'BETH YOSEF')}</h1>
+        <div class="info">COTIZACIÓN${nombre ? (' &middot; ' + esc(nombre)) : ''}${clienteActual ? (' &middot; Cliente ' + esc(clienteActual)) : ''}</div>
+        <table>
+          <thead><tr><th>Código</th><th>Producto</th><th>Unidad</th><th class="r">Cant.</th><th class="r">Precio</th><th class="r">Total</th></tr></thead>
+          <tbody>${filas}</tbody>
+          <tfoot><tr><td colspan="5" class="r">GRAN TOTAL</td><td class="r">${formatoPrecio(total)}</td></tr></tfoot>
+        </table>
+        <button class="btn noprint" onclick="window.print()">📄 Guardar / Imprimir PDF</button>
+        </body></html>`;
+      const w = window.open('', '_blank');
+      if(!w){ alert('Permite las ventanas emergentes para descargar el PDF.'); return; }
+      w.document.write(doc);
+      w.document.close();
+    }
+
     renderCotiza();
 
     // Arranque
