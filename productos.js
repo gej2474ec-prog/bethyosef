@@ -355,15 +355,6 @@ const PRODUCTOS = [
     "existencia": 1286.32
   },
   {
-    "codigo": "29089",
-    "descripcion": "PIEL DE AVE",
-    "precio": 1.0,
-    "familia": "POLLO",
-    "unidad": "K",
-    "foto": "",
-    "existencia": 123.26
-  },
-  {
     "codigo": "20710",
     "descripcion": "PIERNA CON MUSLO DE POLLO KOSHER kg.",
     "precio": 95.0,
@@ -373,15 +364,6 @@ const PRODUCTOS = [
     "existencia": 889.68
   },
   {
-    "codigo": "61007",
-    "descripcion": "PIERNA CON MUSLO DE POLLO SUBSIDIO KG",
-    "precio": 95.0,
-    "familia": "POLLO",
-    "unidad": "K",
-    "foto": "",
-    "existencia": 22.46
-  },
-  {
     "codigo": "20715",
     "descripcion": "PIERNA DE POLLO KG",
     "precio": 95.0,
@@ -389,60 +371,6 @@ const PRODUCTOS = [
     "unidad": "K",
     "foto": "20715.jpg",
     "existencia": 833.6
-  },
-  {
-    "codigo": "61006",
-    "descripcion": "PIERNA POLLO SUBSIDIO KG",
-    "precio": 80.0,
-    "familia": "POLLO",
-    "unidad": "K",
-    "foto": "",
-    "existencia": 323.6
-  },
-  {
-    "codigo": "20001013",
-    "descripcion": "PULPA DE MUSLO DE POLLO",
-    "precio": 180.0,
-    "familia": "POLLO",
-    "unidad": "PZ",
-    "foto": "",
-    "existencia": 72.9
-  },
-  {
-    "codigo": "20001014",
-    "descripcion": "PULPA DE PIERNA DE POLLO",
-    "precio": 150.0,
-    "familia": "POLLO",
-    "unidad": "K",
-    "foto": "",
-    "existencia": 565.66
-  },
-  {
-    "codigo": "20702",
-    "descripcion": "KURSON POLLO NO KOSHER KG",
-    "precio": 38.0,
-    "familia": "POLLO",
-    "unidad": "K",
-    "foto": "",
-    "existencia": 48.65
-  },
-  {
-    "codigo": "90810",
-    "descripcion": "POLLO DUCK SUACE",
-    "precio": 280.0,
-    "familia": "POLLO",
-    "unidad": "PZ",
-    "foto": "",
-    "existencia": 16.0
-  },
-  {
-    "codigo": "20111",
-    "descripcion": "SHAWARMA DE POLLO PZ",
-    "precio": 160.0,
-    "familia": "POLLO",
-    "unidad": "PZ",
-    "foto": "",
-    "existencia": 24.0
   },
   {
     "codigo": "61003",
@@ -1489,51 +1417,6 @@ const PRODUCTOS = [
     "existencia": 36.0
   },
   {
-    "codigo": "111213",
-    "descripcion": "ARROZ AMARILLO",
-    "precio": 280.0,
-    "familia": "CONGELADO COMIDA PREPARADA",
-    "unidad": "K",
-    "foto": "",
-    "existencia": 100.0
-  },
-  {
-    "codigo": "111212",
-    "descripcion": "ARROZ CON FIDEO",
-    "precio": 280.0,
-    "familia": "CONGELADO COMIDA PREPARADA",
-    "unidad": "K",
-    "foto": "",
-    "existencia": 96.0
-  },
-  {
-    "codigo": "111206",
-    "descripcion": "CHICHARO CON CARNE KG",
-    "precio": 250.0,
-    "familia": "CONGELADO COMIDA PREPARADA",
-    "unidad": "K",
-    "foto": "",
-    "existencia": 101.0
-  },
-  {
-    "codigo": "111219",
-    "descripcion": "EJOTE EN SALSA ROJA",
-    "precio": 280.0,
-    "familia": "CONGELADO COMIDA PREPARADA",
-    "unidad": "K",
-    "foto": "",
-    "existencia": 53.0
-  },
-  {
-    "codigo": "111203",
-    "descripcion": "KURSON CALABAZA RELLENA EN SALSA ROJA",
-    "precio": 280.0,
-    "familia": "CONGELADO COMIDA PREPARADA",
-    "unidad": "K",
-    "foto": "",
-    "existencia": 23.0
-  },
-  {
     "codigo": "7501134510760",
     "descripcion": "KURSON EMPANADAS DE CARNE",
     "precio": 185.0,
@@ -1649,24 +1532,6 @@ const PRODUCTOS = [
     "unidad": "PZ",
     "foto": "7501134500624.JPG",
     "existencia": 42.0
-  },
-  {
-    "codigo": "111229",
-    "descripcion": "PURE DE PAPA PARA COMIDAS",
-    "precio": 80.0,
-    "familia": "CONGELADO COMIDA PREPARADA",
-    "unidad": "K",
-    "foto": "",
-    "existencia": 96.0
-  },
-  {
-    "codigo": "90808",
-    "descripcion": "VERDURAS AL VAPOR",
-    "precio": 280.0,
-    "familia": "CONGELADO COMIDA PREPARADA",
-    "unidad": "PZ",
-    "foto": "",
-    "existencia": 101.0
   },
   {
     "codigo": "5500010007610",
