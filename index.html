@@ -268,9 +268,14 @@
     #cotizaBody{flex:1;overflow-y:auto;padding:14px 16px}
     #cotizaBuscar{width:100%;padding:11px 14px 11px 42px;border:1px solid var(--borde);border-radius:10px;font-size:1rem;outline:none;transition:border-color .15s, box-shadow .15s}
     #cotizaBuscar:focus{border-color:var(--acento);box-shadow:0 0 0 3px rgba(225,37,27,.12)}
-    .cot-res{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 4px;border-bottom:1px solid var(--borde)}
-    .cot-res .mini{font-size:.78rem;color:var(--suave)}
-    .cot-add{width:34px;height:34px;flex:none;border:1px solid var(--acento);background:#fff;color:var(--acento);border-radius:8px;font-size:1.2rem;cursor:pointer}
+    .cot-res{display:flex;gap:10px;padding:10px 4px;border-bottom:1px solid var(--borde);align-items:flex-start}
+    .cot-foto{width:62px;height:62px;flex:none;border-radius:8px;object-fit:contain;background:#fff;border:1px solid var(--borde);padding:3px;display:block}
+    .cot-foto.sf{display:flex;align-items:center;justify-content:center;font-size:1.6rem;color:#c0c4cc}
+    .cot-info{flex:1;min-width:0}
+    .cot-info .dn{font-weight:600;font-size:.9rem;line-height:1.25}
+    .cot-res .mini{font-size:.78rem;color:var(--suave);margin-top:2px}
+    .cot-act{display:flex;align-items:center;gap:8px;margin-top:8px}
+    .cot-add{flex:1;background:var(--acento);color:#fff;border:none;border-radius:8px;height:32px;font-size:.85rem;font-weight:700;cursor:pointer;transition:background .15s}
     .cotiza-especial{margin-top:14px;background:#f9fafb;border:1px solid var(--borde);border-radius:12px;padding:12px}
     .cotiza-especial .lbl{font-size:.85rem;color:var(--suave);margin-bottom:6px;font-weight:600}
     .cotiza-especial #espDesc{width:100%;padding:10px 12px;border:1px solid var(--borde);border-radius:8px;font-size:.95rem;outline:none}
@@ -403,7 +408,7 @@
     <div class="pie" id="cotizaPie"></div>
   </aside>
 
-  <script src="productos.js?v=0e0cdf16"></script>
+  <script src="productos.js?v=981c72a6"></script>
   <script>
     // --- Rellenar textos de la tienda ---
     document.getElementById('logo').alt = CONFIG.nombreTienda;
@@ -1011,37 +1016,69 @@
 
     document.getElementById('btnCotiza').onclick = () => {
       fondoCotiza.style.display = 'block'; elCotiza.style.display = 'flex';
-      renderCotiza();   // refrescar precios según el cliente actual
+      renderResultados();   // mostrar el catálogo de la lista de precios
+      renderCotiza();       // refrescar precios según el cliente actual
     };
     function cerrarCotiza(){ fondoCotiza.style.display = 'none'; elCotiza.style.display = 'none'; }
     document.getElementById('cerrarCotiza').onclick = cerrarCotiza;
     fondoCotiza.onclick = cerrarCotiza;
 
-    // Buscar en la base de datos
-    cotizaBuscar.addEventListener('input', () => {
+    // Muestra los resultados como catálogo (con foto). Sin búsqueda: primeros 24.
+    function renderResultados(){
       const q = cotizaBuscar.value.trim().toLowerCase();
-      if(q.length < 2){ cotizaResultados.innerHTML = ''; cotizaResultados._res = []; return; }
-      const res = [];
-      for(let i = 0; i < BASE.length && res.length < 25; i++){
-        const p = BASE[i];
-        if((p.descripcion || '').toLowerCase().includes(q) || String(p.codigo || '').toLowerCase().includes(q)) res.push(p);
+      let res = [];
+      if(q.length === 0){
+        res = BASE.slice(0, 24);
+      }else{
+        for(let i = 0; i < BASE.length && res.length < 40; i++){
+          const p = BASE[i];
+          if((p.descripcion || '').toLowerCase().includes(q) || String(p.codigo || '').toLowerCase().includes(q)) res.push(p);
+        }
       }
       cotizaResultados._res = res;
-      cotizaResultados.innerHTML = res.length ? res.map((p, i) => `
-        <div class="cot-res">
-          <div><div><b>${p.descripcion || ''}</b></div>
-          <div class="mini">${p.codigo ? ('Cód. ' + p.codigo + ' · ') : ''}${formatoPrecio(p.precio)}${p.unidad ? (' / ' + p.unidad) : ''}</div></div>
-          <button class="cot-add" data-i="${i}" type="button">+</button>
-        </div>`).join('')
-        : '<div class="mini" style="padding:8px 4px">Sin resultados. Puedes pedirlo abajo como "por cotizar".</div>';
-    });
+      cotizaResultados.innerHTML = res.length ? res.map((p, i) => {
+        const foto = p.foto
+          ? `<img class="cot-foto" src="imagenes/${p.foto}" loading="lazy" alt="" onerror="this.outerHTML='<div class=\\'cot-foto sf\\'>📦</div>'">`
+          : `<div class="cot-foto sf">📦</div>`;
+        return `<div class="cot-res" data-i="${i}">
+          ${foto}
+          <div class="cot-info">
+            <div class="dn">${p.descripcion || ''}</div>
+            <div class="mini">${p.codigo ? ('Cód. ' + p.codigo + ' · ') : ''}${formatoPrecio(p.precio)}${p.unidad ? (' / ' + p.unidad) : ''}</div>
+            <div class="cot-act">
+              <div class="miniqty">
+                <button class="rmenos" type="button">−</button>
+                <input class="rcant" type="number" value="1" min="1" step="1" inputmode="decimal">
+                <button class="rmas" type="button">+</button>
+              </div>
+              <button class="cot-add" type="button">Agregar</button>
+            </div>
+          </div>
+        </div>`;
+      }).join('')
+        : '<div class="mini" style="padding:10px 4px">Sin resultados. Puedes pedirlo abajo como "por cotizar".</div>';
+    }
+    cotizaBuscar.addEventListener('input', renderResultados);
+
     cotizaResultados.addEventListener('click', e => {
-      const b = e.target.closest('.cot-add'); if(!b) return;
-      const p = cotizaResultados._res[parseInt(b.dataset.i, 10)];
-      if(!p) return;
-      cotizaItems.push({ tipo:'lista', codigo:p.codigo, desc:p.descripcion, unidad:p.unidad, precioBase:p.precio || 0, cant:1 });
-      cotizaBuscar.value = ''; cotizaResultados.innerHTML = ''; cotizaResultados._res = [];
-      renderCotiza();
+      const card = e.target.closest('.cot-res'); if(!card) return;
+      const input = card.querySelector('.rcant');
+      if(e.target.classList.contains('rmenos')){
+        let v = parseFloat(input.value) || 1; input.value = Math.max(1, fmtCant(v - 1)); return;
+      }
+      if(e.target.classList.contains('rmas')){
+        let v = parseFloat(input.value) || 1; input.value = fmtCant(v + 1); return;
+      }
+      if(e.target.classList.contains('cot-add')){
+        const p = cotizaResultados._res[parseInt(card.dataset.i, 10)];
+        if(!p) return;
+        let cant = parseFloat(input.value); if(!cant || cant <= 0) cant = 1;
+        cotizaItems.push({ tipo:'lista', codigo:p.codigo, desc:p.descripcion, unidad:p.unidad, precioBase:p.precio || 0, cant:fmtCant(cant) });
+        renderCotiza();
+        const b = e.target;
+        b.textContent = '✓ Agregado'; b.style.background = 'var(--verde)';
+        setTimeout(() => { b.textContent = 'Agregar'; b.style.background = ''; }, 800);
+      }
     });
 
     // Artículo especial (por cotizar)
