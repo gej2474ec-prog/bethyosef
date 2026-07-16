@@ -1013,7 +1013,7 @@
     // ================= COTIZACIÓN =================
     // La base de cotizaciones es lo más pesado, así que va en 'basedatos.js'
     // y se carga SOLO cuando el cliente abre Cotización (la página abre rápido).
-    var BASEDATOS_SRC = "basedatos.js?v=41d3b62f";   // publicar.py le agrega ?v=hash
+    var BASEDATOS_SRC = "basedatos.js?v=fc061ced";   // publicar.py le agrega ?v=hash
     let BASE = Array.isArray(window.BASE_DATOS) ? window.BASE_DATOS : [];
     let basePedida = false;
     function cargarBaseCotiza(cb){
@@ -1082,7 +1082,7 @@
       cotizaResultados._res = res;
       cotizaResultados.innerHTML = res.length ? res.map((p, i) => {
         const foto = p.foto
-          ? `<img class="cot-foto" src="imagenes/${p.foto}" loading="lazy" alt="" onerror="this.outerHTML='<div class=\\'cot-foto sf\\'>📦</div>'">`
+          ? `<img class="cot-foto" src="thumbs/${p.foto}" loading="lazy" alt="" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='imagenes/${p.foto}'}else{this.outerHTML='<div class=\\'cot-foto sf\\'>📦</div>'}">`
           : `<div class="cot-foto sf">📦</div>`;
         return `<div class="cot-res" data-i="${i}">
           ${foto}
