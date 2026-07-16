@@ -1,23 +1,33 @@
 /* Service Worker de BETH YOSEF (app instalable)
-   Estrategia: primero internet (para tener siempre lo nuevo),
-   y si no hay conexion, usa lo guardado. */
+   Estrategia: "stale-while-revalidate" — muestra AL INSTANTE lo que ya
+   tiene guardado (funciona aunque los datos vayan lentos) y actualiza en
+   segundo plano para la próxima vez. */
 const CACHE = 'bethyosef-v1';
 
-self.addEventListener('install', (e) => { self.skipWaiting(); });
-self.addEventListener('activate', (e) => { self.clients.claim(); });
+self.addEventListener('install', function (e) { self.skipWaiting(); });
 
-self.addEventListener('fetch', (e) => {
-  const req = e.request;
-  // Solo manejar GET del mismo sitio (no la Hoja de Google ni otros)
+self.addEventListener('activate', function (e) {
+  e.waitUntil(
+    caches.keys().then(function (keys) {
+      return Promise.all(keys.map(function (k) { if (k !== CACHE) return caches.delete(k); }));
+    }).then(function () { return self.clients.claim(); })
+  );
+});
+
+self.addEventListener('fetch', function (e) {
+  var req = e.request;
   if (req.method !== 'GET' || new URL(req.url).origin !== self.location.origin) return;
 
   e.respondWith(
-    fetch(req)
-      .then((res) => {
-        const copia = res.clone();
-        caches.open(CACHE).then((c) => c.put(req, copia)).catch(() => {});
+    caches.match(req).then(function (cached) {
+      var red = fetch(req).then(function (res) {
+        try {
+          var copia = res.clone();
+          caches.open(CACHE).then(function (c) { c.put(req, copia); }).catch(function () {});
+        } catch (err) {}
         return res;
-      })
-      .catch(() => caches.match(req))
+      }).catch(function () { return cached; });
+      return cached || red;   // si ya está guardado, lo muestra YA; si no, espera la red
+    })
   );
 });
