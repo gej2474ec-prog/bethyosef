@@ -993,6 +993,17 @@
     // ================= COTIZACIÓN =================
     const BASE = (typeof BASE_DATOS !== 'undefined') ? BASE_DATOS : [];
     let cotizaItems = [];
+    let cotizaFolio = null;
+    // Folio único por cotización: COT-AAAAMMDD-HHMMSS (se genera una vez y se reutiliza)
+    function folioActual(){
+      if(!cotizaFolio){
+        const d = new Date();
+        const p = n => String(n).padStart(2, '0');
+        cotizaFolio = 'COT-' + d.getFullYear() + p(d.getMonth() + 1) + p(d.getDate()) +
+          '-' + p(d.getHours()) + p(d.getMinutes()) + p(d.getSeconds());
+      }
+      return cotizaFolio;
+    }
     const fondoCotiza = document.getElementById('fondoCotiza');
     const elCotiza = document.getElementById('cotiza');
     const cotizaBuscar = document.getElementById('cotizaBuscar');
@@ -1119,7 +1130,7 @@
         fetch(CONFIG.pedidosURL, {
           method:'POST', mode:'no-cors', headers:{ 'Content-Type':'text/plain;charset=utf-8' },
           body: JSON.stringify({
-            tipo:'cotizacion', nombre: nombre, cliente: clienteActual || '',
+            tipo:'cotizacion', folio: folioActual(), nombre: nombre, cliente: clienteActual || '',
             items: cotizaItems.map(i => ({
               tipo: i.tipo, codigo: i.codigo || '', desc: i.desc, cant: fmtCant(i.cant),
               precio: (i.tipo === 'lista') ? precioClienteDe(i.codigo, i.precioBase) : 0
@@ -1134,6 +1145,7 @@
       if(cotizaItems.length === 0){ cerrarCotiza(); return; }
       guardarCotizaEnHoja();
       cotizaItems = [];
+      cotizaFolio = null;   // la próxima cotización tendrá un folio nuevo
       document.getElementById('cotizaNombre').value = '';
       renderCotiza();
       cerrarCotiza();
@@ -1219,7 +1231,7 @@
       doc.text(sub, 14, y);
       const fechaStr = new Date().toLocaleDateString('es-MX', { day: '2-digit', month: '2-digit', year: 'numeric' });
       doc.setFontSize(10);
-      doc.text('Fecha: ' + fechaStr, 14, y + 5.5);
+      doc.text('Folio: ' + folioActual() + '     Fecha: ' + fechaStr, 14, y + 5.5);
 
       doc.autoTable({
         startY: y + 11,
