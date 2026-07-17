@@ -408,7 +408,7 @@
     <div class="pie" id="cotizaPie"></div>
   </aside>
 
-  <script src="productos.js?v=5aa0bddc"></script>
+  <script src="productos.js?v=3e8502b8"></script>
   <script>
     // --- Rellenar textos de la tienda ---
     document.getElementById('logo').alt = CONFIG.nombreTienda;
@@ -455,19 +455,31 @@
       return DESC_NORM[clienteActual.trim().toLowerCase()] || 0;
     }
 
-    // Clientes restringidos: solo ven las FAMILIAS marcadas en la pestaña "Restringidos"
+    // Clientes restringidos: ven las FAMILIAS marcadas ("Restringidos") MÁS
+    // los productos sueltos que se les asignen por código ("RestringidosProductos").
     const normFam = f => String(f == null ? '' : f).trim().toLowerCase();
     const REST = (typeof RESTRINGIDOS !== 'undefined') ? RESTRINGIDOS : {};
     const REST_NORM = {};
     Object.keys(REST).forEach(k => {
       REST_NORM[k.trim().toLowerCase()] = new Set((REST[k] || []).map(normFam));
     });
+    // Productos individuales extra por cliente (por código)
+    const RESTP = (typeof RESTRINGIDOS_PROD !== 'undefined') ? RESTRINGIDOS_PROD : {};
+    const RESTP_NORM = {};
+    Object.keys(RESTP).forEach(k => {
+      RESTP_NORM[k.trim().toLowerCase()] = new Set((RESTP[k] || []).map(normCod));
+    });
     function clienteRestringido(){
-      return REST_NORM.hasOwnProperty(clienteActual.trim().toLowerCase());
+      const k = clienteActual.trim().toLowerCase();
+      return REST_NORM.hasOwnProperty(k) || RESTP_NORM.hasOwnProperty(k);
     }
     // Familias que puede ver ese cliente restringido
     function familiasPermitidas(){
       return REST_NORM[clienteActual.trim().toLowerCase()] || new Set();
+    }
+    // Códigos sueltos extra que puede ver (además de sus familias)
+    function codigosExtra(){
+      return RESTP_NORM[clienteActual.trim().toLowerCase()] || new Set();
     }
 
     const PROD_POR_COD = {};
@@ -577,12 +589,14 @@
       const grid = document.getElementById('grid');
       grid.innerHTML = "";
 
-      // Si el cliente es restringido, solo mostramos las familias que tiene permitidas
+      // Si el cliente es restringido, mostramos sus familias permitidas MÁS
+      // los productos sueltos que se le asignaron por código.
       const restringido = clienteRestringido();
       const permitidas = restringido ? familiasPermitidas() : null;
+      const extra = restringido ? codigosExtra() : null;
 
       const lista = PRODUCTOS.filter(p => {
-        if(permitidas && !permitidas.has(normFam(p.familia))) return false;
+        if(restringido && !permitidas.has(normFam(p.familia)) && !extra.has(normCod(p.codigo))) return false;
         const okCat = categoriaActual === "Todos" || p.familia === categoriaActual;
         const okBusca = p.descripcion.toLowerCase().includes(textoBusqueda)
                      || p.codigo.toLowerCase().includes(textoBusqueda);
@@ -1013,7 +1027,7 @@
     // ================= COTIZACIÓN =================
     // La base de cotizaciones es lo más pesado, así que va en 'basedatos.js'
     // y se carga SOLO cuando el cliente abre Cotización (la página abre rápido).
-    var BASEDATOS_SRC = "basedatos.js?v=fc061ced";   // publicar.py le agrega ?v=hash
+    var BASEDATOS_SRC = "basedatos.js?v=c6a41013";   // publicar.py le agrega ?v=hash
     let BASE = Array.isArray(window.BASE_DATOS) ? window.BASE_DATOS : [];
     let basePedida = false;
     function cargarBaseCotiza(cb){
