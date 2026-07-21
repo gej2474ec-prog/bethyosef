@@ -1043,6 +1043,14 @@
       s.onerror = function(){ basePedida = false; };
       document.head.appendChild(s);
     }
+    // Precargar la base (75 KB) en segundo plano, cuando el celular ya esté
+    // libre, para que abrir "Cotización" sea instantáneo. No estorba al
+    // catálogo porque espera a que la página termine de cargar.
+    window.addEventListener('load', function(){
+      const precargar = function(){ if(!BASE.length) cargarBaseCotiza(); };
+      if('requestIdleCallback' in window) requestIdleCallback(precargar, { timeout: 6000 });
+      else setTimeout(precargar, 3000);
+    });
     let cotizaItems = [];
     let cotizaFolio = null;
     // Folio único por cotización: COT-AAAAMMDD-HHMMSS (se genera una vez y se reutiliza)
